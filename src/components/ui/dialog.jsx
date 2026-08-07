@@ -31,11 +31,18 @@ const sizeClasses = {
 
 const DialogContent = React.forwardRef(
   (
-    { className, children, size = "md", headerVariant = "default", ...props },
+    {
+      className,
+      children,
+      size = "md",
+      headerVariant = "default",
+      overlayClassName,
+      ...props
+    },
     ref,
   ) => (
     <DialogPortal>
-      <DialogOverlay />
+      <DialogOverlay className={overlayClassName} />
       <DialogPrimitive.Content
         ref={ref}
         className={cn(

@@ -8,7 +8,7 @@ import { Footer } from "@/components/client/footer";
 import { FloatingContact } from "@/components/client/floating-contact";
 
 /**
- * Port of Laravel's `Layout::resolveMainMenu()`: the header nav is
+ * The header nav is
  * `staticPrefix (Trang chủ, Giới thiệu, Tuyến đường) + dynamicItems (DB menu
  * tree from /public/menus) + staticSuffix (Liên hệ)` — not the dynamic tree
  * alone. Static ids are negative to avoid colliding with real DB menu ids.

@@ -2,7 +2,10 @@ import { headers } from "next/headers";
 import "./globals.css";
 export const metadata = {
   title: "King Express Bus",
-  description: "King Express Bus — client portal and admin"
+  description: "King Express Bus — client portal and admin",
+  icons: {
+    icon: "/assets/client/icons/logo.ico",
+  },
 };
 export default async function RootLayout({
   children

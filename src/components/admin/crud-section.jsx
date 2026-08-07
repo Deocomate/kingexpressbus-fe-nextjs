@@ -167,8 +167,13 @@ export function CrudSection({
 
   async function handleReorderSave() {
     try {
+      const qs = new URLSearchParams();
+      for (const [key, value] of Object.entries(extraParams ?? {})) {
+        if (value !== undefined && value !== "") qs.set(key, String(value));
+      }
+      const suffix = qs.toString() ? `?${qs.toString()}` : "";
       await adminReorder(
-        `${resourcePath}/reorder`,
+        `${resourcePath}/reorder${suffix}`,
         reorderItems.map((i) => i.id),
       );
       toast.success("Đã lưu thứ tự");

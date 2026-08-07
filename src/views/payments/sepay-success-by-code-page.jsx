@@ -6,7 +6,7 @@ import { getSepayReturn } from "@/services/booking-api";
 export default async function SepaySuccessReturnPage({ params }) {
   const { code } = await params;
   const result = await getSepayReturn(code);
-  // `sepay_returned=1` mirrors Blade's `sepay_payment_returned` session
+  // `sepay_returned=1` mirrors `sepay_payment_returned` session
   // flash (set in SePayController::success before its redirect) — this app
   // has no server session to carry that flag, so it rides the query string
   // to the success page instead, distinguishing "still verifying with SePay"

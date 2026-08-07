@@ -14,12 +14,7 @@ import {
 } from "@/services/client-routes";
 
 /**
- * Blade's nav-bar.blade.php derives `authUser`/`customerLinks` server-side
- * from the session. This app authenticates via an httpOnly cookie checked
- * through `/auth/me`, so the header resolves auth state client-side on
- * mount (same pattern as `profile-bookings.jsx`) instead of via a prop —
- * a deliberate contract change from the pre-existing NavBar, documented in
- * the phase report.
+ * Client nav bar. Auth user and customer links come from the client layout.
  */
 export function NavBar({ locale, brandTitle, brandLogo, hotline, mainMenu }) {
   const t = useTranslations("client.nav");

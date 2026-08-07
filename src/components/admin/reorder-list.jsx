@@ -1,17 +1,20 @@
 "use client";
 
 /**
- * Vertical reorder list — @dnd-kit sortable with overlay, touch support,
- * and vertical-axis lock for predictable admin list sorting.
+ * Vertical reorder list — @dnd-kit sortable with overlay.
+ * Drag stays local; parent is notified only after drop (via startTransition).
+ *
+ * DragOverlay is portaled to document.body: Dialog/Sheet use CSS transform
+ * for centering, which creates a containing block for position:fixed and
+ * makes the overlay jump away from the pointer if rendered inside the modal.
  */
-import { useEffect, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   DndContext,
   DragOverlay,
   KeyboardSensor,
-  MeasuringStrategy,
   PointerSensor,
-  TouchSensor,
   closestCenter,
   defaultDropAnimationSideEffects,
   useSensor,
@@ -24,37 +27,41 @@ import {
   useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { restrictToParentElement, restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "lucide-react";
 import { cn } from "@/utils/cn";
 
 const dropAnimation = {
+  duration: 180,
+  easing: "cubic-bezier(0.25, 1, 0.5, 1)",
   sideEffects: defaultDropAnimationSideEffects({
     styles: { active: { opacity: "0.4" } },
   }),
 };
 
-const measuring = {
-  droppable: { strategy: MeasuringStrategy.Always },
-};
+const verticalOnly = [restrictToVerticalAxis];
 
 export function ReorderList({ items, onOrderChange, renderLabel, className }) {
   const [ordered, setOrdered] = useState(items);
   const [activeId, setActiveId] = useState(null);
-  const itemIdsKey = items.map((i) => i.id).join(",");
+  const [portalReady, setPortalReady] = useState(false);
+  const itemsOrderKey = items.map((i) => i.id).join(",");
 
   useEffect(() => {
     setOrdered(items);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [itemIdsKey]);
+  }, [itemsOrderKey]);
 
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
+
+  // PointerSensor covers mouse + touch/pen. Do not also register TouchSensor
+  // (double sensors fight activation and feel sticky).
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 6 },
-    }),
-    useSensor(TouchSensor, {
-      activationConstraint: { delay: 180, tolerance: 8 },
+      activationConstraint: { distance: 8 },
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
@@ -72,13 +79,15 @@ export function ReorderList({ items, onOrderChange, renderLabel, className }) {
     setActiveId(null);
     if (!over || active.id === over.id) return;
 
-    setOrdered((prev) => {
-      const oldIndex = prev.findIndex((i) => i.id === Number(active.id));
-      const newIndex = prev.findIndex((i) => i.id === Number(over.id));
-      if (oldIndex < 0 || newIndex < 0) return prev;
-      const next = arrayMove(prev, oldIndex, newIndex);
+    const oldIndex = ordered.findIndex((i) => i.id === Number(active.id));
+    const newIndex = ordered.findIndex((i) => i.id === Number(over.id));
+    if (oldIndex < 0 || newIndex < 0) return;
+
+    const next = arrayMove(ordered, oldIndex, newIndex);
+    setOrdered(next);
+    // Defer parent update so drop animation is not blocked by API / setState.
+    startTransition(() => {
       onOrderChange(next.map((i) => i.id));
-      return next;
     });
   }
 
@@ -97,6 +106,27 @@ export function ReorderList({ items, onOrderChange, renderLabel, className }) {
     );
   }
 
+  const overlay = (
+    <DragOverlay dropAnimation={dropAnimation} adjustScale={false}>
+      {activeItem ? (
+        <div className="flex cursor-grabbing items-center gap-2 rounded-admin-md border-2 border-admin-primary bg-admin-surface px-3 py-2.5 shadow-xl ring-1 ring-black/10">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-admin-sm bg-admin-primary-soft text-[0.65rem] font-semibold tabular-nums text-admin-primary">
+            {activeIndex + 1}
+          </span>
+          <GripVertical className="size-4 shrink-0 text-admin-primary" />
+          <div className="min-w-0 flex-1 truncate text-sm font-medium">
+            {typeof activeItem.stop_name === "string" &&
+            activeItem.stop_name.trim()
+              ? activeItem.stop_name
+              : typeof activeItem.name === "string"
+                ? activeItem.name
+                : `#${activeItem.id}`}
+          </div>
+        </div>
+      ) : null}
+    </DragOverlay>
+  );
+
   return (
     <div className={cn("space-y-2", className)}>
       <p className="text-xs text-admin-muted">
@@ -107,8 +137,8 @@ export function ReorderList({ items, onOrderChange, renderLabel, className }) {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-        measuring={measuring}
+        modifiers={verticalOnly}
+        autoScroll={false}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={() => setActiveId(null)}
@@ -130,19 +160,7 @@ export function ReorderList({ items, onOrderChange, renderLabel, className }) {
             ))}
           </ul>
         </SortableContext>
-        <DragOverlay dropAnimation={dropAnimation} adjustScale={false}>
-          {activeItem ? (
-            <div className="flex items-center gap-2 rounded-admin-md border-2 border-admin-primary bg-admin-surface px-3 py-2.5 shadow-xl ring-1 ring-black/10">
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-admin-sm bg-admin-primary-soft text-[0.65rem] font-semibold tabular-nums text-admin-primary">
-                {activeIndex + 1}
-              </span>
-              <GripVertical className="size-4 shrink-0 text-admin-primary" />
-              <div className="min-w-0 flex-1 truncate text-sm font-medium">
-                {renderLabel(activeItem)}
-              </div>
-            </div>
-          ) : null}
-        </DragOverlay>
+        {portalReady ? createPortal(overlay, document.body) : null}
       </DndContext>
     </div>
   );
@@ -163,12 +181,13 @@ function ReorderRow({ id, index, isActive, children }) {
     <li
       ref={setNodeRef}
       style={{
-        transform: CSS.Transform.toString(transform),
-        transition,
+        transform: CSS.Translate.toString(transform),
+        // Skip transition while dragging — avoids laggy “rubber band” feel.
+        transition: isDragging ? undefined : transition,
       }}
       className={cn(
-        "flex items-center gap-2 rounded-admin-md border border-admin-border bg-admin-surface px-2 py-2 text-sm transition-shadow",
-        isDragging && "opacity-30 shadow-none",
+        "flex items-center gap-2 rounded-admin-md border border-admin-border bg-admin-surface px-3 py-2.5 text-sm shadow-sm",
+        isDragging && "opacity-40 shadow-none",
         isActive && !isDragging && "ring-2 ring-admin-primary/30",
       )}
     >

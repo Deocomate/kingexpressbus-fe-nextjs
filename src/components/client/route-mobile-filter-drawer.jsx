@@ -4,11 +4,7 @@ import { SlidersHorizontal, X } from "lucide-react";
 import { RouteFilterFields } from "@/components/client/route-filter-fields";
 
 /**
- * Port of the `#filter-panel-mobile` slide-in panel in routes/show.blade.php.
- * Blade toggles visibility with vanilla JS listeners on separate DOM nodes
- * (`#mobile-filter-toggle`, `#mobile-filter-backdrop`, `#mobile-filter-close`);
- * here the trigger + backdrop + panel are one client component with local
- * `open` state, same visual result, no cross-tree DOM queries needed.
+ * Mobile slide-in filter panel for the route detail page.
  */
 export function RouteMobileFilterDrawer({
   action,

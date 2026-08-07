@@ -58,6 +58,23 @@ export function BookingsSection() {
     { accessorKey: "booking_code", header: "Mã vé" },
     { accessorKey: "customer_name", header: "Khách hàng" },
     { accessorKey: "customer_phone", header: "Điện thoại" },
+    {
+      accessorKey: "created_at",
+      header: "Ngày đặt",
+      cell: ({ getValue }) => {
+        const value = getValue();
+        if (!value) return "—";
+        const d = new Date(value);
+        if (Number.isNaN(d.getTime())) return String(value);
+        return d.toLocaleString("vi-VN", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      },
+    },
     { accessorKey: "booking_date", header: "Ngày đi" },
     { accessorKey: "quantity", header: "SL" },
     {

@@ -7,7 +7,7 @@ import { ApiError } from "@/services/api-base";
 import { forgotPassword } from "@/services/client-auth";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
-/** Port of client/auth/forgot-password.blade.php. */
+/** Forgot-password form. */
 export function ForgotPasswordForm({ locale }) {
   const t = useTranslations("client.auth.forgot_password");
   const tValidation = useTranslations("client.auth.validation");

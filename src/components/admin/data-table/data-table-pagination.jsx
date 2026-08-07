@@ -9,11 +9,11 @@ export function DataTablePagination({ page, pageSize, total, onPageChange }) {
   const to = Math.min(page * pageSize, total);
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-admin-muted">
+    <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-admin-muted">
       <p>
         {total === 0 ? "Không có dữ liệu" : `${from}–${to} / ${total}`}
       </p>
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-2">
         <Button
           variant="outline"
           size="icon"

@@ -313,7 +313,7 @@
         "sold_out_button": "Sold Out",
         "off_day_button": "Not Running",
         "off_day_badge": "Not Running",
-        "seats_left": ":count seats left",
+        "seats_left": "{count} seats left",
         "details_button": "View Details"
       },
       "no_trips": {

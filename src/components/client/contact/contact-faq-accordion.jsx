@@ -3,9 +3,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 /**
- * Port of contact/index.blade.php's Alpine `x-data="{ openFaq: 0 }"` FAQ
- * accordion: first item open by default, only one open at a time, chevron
- * rotates 180deg when expanded.
+ * Contact FAQ accordion: first item open by default, one open at a time.
  */
 export function ContactFaqAccordion({ items }) {
   const [openIndex, setOpenIndex] = useState(0);

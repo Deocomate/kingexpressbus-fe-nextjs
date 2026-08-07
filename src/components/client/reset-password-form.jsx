@@ -8,7 +8,7 @@ import { ApiError } from "@/services/api-base";
 import { resetPassword } from "@/services/client-auth";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
-/** Port of client/auth/reset-password.blade.php. */
+/** Reset-password form. */
 export function ResetPasswordForm({ locale, token, initialEmail = "" }) {
   const t = useTranslations("client.auth.reset_password");
   const tValidation = useTranslations("client.auth.validation");

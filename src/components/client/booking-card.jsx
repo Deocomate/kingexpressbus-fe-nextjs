@@ -11,13 +11,9 @@ const STATUS_COLORS = {
 };
 
 /**
- * Port of booking-card.blade.php. The current `Booking` API type
- * (@/services/booking-api) doesn't carry the denormalized route name /
- * pickup / dropoff labels the Blade partial expects (those come from
- * Eloquent relations Laravel eager-loads); this component takes an
- * explicit view-model shape instead so a future page-owning phase can map
- * whatever booking-list data it fetches onto it without this component
- * reaching into booking-api itself.
+ * Booking history/upcoming card.
+ * Takes an explicit view-model (route name, pickup/dropoff labels) rather
+ * than the raw Booking API type, which does not include those labels.
  */
 
 export function BookingCard({ locale, booking, type = "history" }) {

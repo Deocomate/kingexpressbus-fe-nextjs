@@ -17,6 +17,8 @@ import {
 import { RouteMobileFilterDrawer } from "@/components/client/route-mobile-filter-drawer";
 import { TripRowCard } from "@/components/client/trip-row-card";
 import { MobileStickyBookingBar } from "@/components/client/mobile-sticky-booking-bar";
+import { formatIsoDate, formatMoney, routeThumbnail } from "@/utils/client-format";
+
 const TIME_RANGE_KEYS = [
   "early_morning",
   "morning",
@@ -24,15 +26,18 @@ const TIME_RANGE_KEYS = [
   "evening",
   "night",
 ];
+
 function todayIso() {
   return new Date().toISOString().slice(0, 10);
 }
+
 function toArray(value) {
   if (!value) return [];
   return Array.isArray(value) ? value : [value];
 }
+
 function timeBucket(startTime) {
-  const [h] = startTime.split(":").map(Number);
+  const [h] = String(startTime).split(":").map(Number);
   if (h >= 5 && h < 8) return "early_morning";
   if (h >= 8 && h < 12) return "morning";
   if (h >= 12 && h < 17) return "afternoon";
@@ -161,10 +166,10 @@ export default async function RouteShowPage({ params, searchParams }) {
   const clearFiltersUrl = `${showHref}?date=${date}`;
   const priceDisplay =
     route.price_default > 0
-      ? t("price_from", {
-          price: `${route.price_default.toLocaleString(locale === "vi" ? "vi-VN" : "en-US")}đ`,
-        })
+      ? t("price_from", { price: formatMoney(route.price_default, locale) })
       : t("price_contact");
+  const dateLabel = formatIsoDate(date);
+
   function quickFilterHref(overrides) {
     const qs = new URLSearchParams();
     qs.set("date", date);
@@ -184,23 +189,12 @@ export default async function RouteShowPage({ params, searchParams }) {
     if (nextHasSeats) qs.set("has_seats", "1");
     return `${showHref}?${qs.toString()}`;
   }
+
   const quickTimeFilters = [
-    {
-      key: "early_morning",
-      icon: "☀",
-    },
-    {
-      key: "morning",
-      icon: "🌤",
-    },
-    {
-      key: "afternoon",
-      icon: "☀",
-    },
-    {
-      key: "evening",
-      icon: "🌙",
-    },
+    "early_morning",
+    "morning",
+    "afternoon",
+    "evening",
   ];
   const lowestPrice =
     trips.length > 0
@@ -226,14 +220,14 @@ export default async function RouteShowPage({ params, searchParams }) {
           <div
             className="ksb-hero-media"
             style={{
-              backgroundImage: `url('${route.thumbnail_url || "/assets/client/images/city_imgs/ha-noi.jpg"}')`,
+              backgroundImage: `url('${routeThumbnail(route)}')`,
             }}
           />
         </div>
         <div className="container relative z-10 mx-auto max-w-7xl px-4">
           <div className="grid gap-6 lg:grid-cols-[1fr_0.55fr] lg:items-end">
             <div>
-              <span className="mb-3 inline-flex items-center gap-2 rounded-sm border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/78">
+              <span className="mb-3 inline-flex items-center gap-2 rounded-sm border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/80">
                 <MapPinned className="h-3.5 w-3.5" aria-hidden="true" />
                 {t("hero_brand")}
               </span>
@@ -262,35 +256,39 @@ export default async function RouteShowPage({ params, searchParams }) {
       </section>
       {allTrips.length > 0 || hasActiveFilters ? (
         <>
-          <section className="ksb-section-compact border-y border-brand-100 bg-surface">
+          <section className="ksb-section-compact border-y border-line bg-surface">
             <div className="container mx-auto max-w-7xl px-4">
               <div className="flex items-center gap-2 overflow-x-auto pb-1">
                 <span className="mr-1 whitespace-nowrap text-sm font-semibold text-muted">
                   {t("quick_filters.label")}
                 </span>
-                {quickTimeFilters.map(({ key }) => {
+                {quickTimeFilters.map((key) => {
                   const isActive = filterState.timeRanges.includes(key);
                   return (
                     <Link
                       key={key}
-                      href={quickFilterHref({
-                        time_range: key,
-                      })}
-                      className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border px-3 py-1.5 text-xs font-semibold transition ${isActive ? "border-brand-600 bg-brand-600 text-white" : "border-line text-ink hover:border-line-strong hover:bg-panel"}`}
+                      href={quickFilterHref({ time_range: key })}
+                      className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border px-3 py-1.5 text-xs font-semibold transition ${
+                        isActive
+                          ? "border-brand-600 bg-brand-600 text-white"
+                          : "border-line text-ink hover:border-line-strong hover:bg-panel"
+                      }`}
                     >
                       {t(`filters.time_range_${key}`)}
                     </Link>
                   );
                 })}
                 <Link
-                  href={quickFilterHref({
-                    has_seats: !hasSeatsFilter,
-                  })}
-                  className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border px-3 py-1.5 text-xs font-semibold transition ${hasSeatsFilter ? "border-brand-600 bg-brand-600 text-white" : "border-line text-ink hover:border-line-strong hover:bg-panel"}`}
+                  href={quickFilterHref({ has_seats: !hasSeatsFilter })}
+                  className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border px-3 py-1.5 text-xs font-semibold transition ${
+                    hasSeatsFilter
+                      ? "border-brand-600 bg-brand-600 text-white"
+                      : "border-line text-ink hover:border-line-strong hover:bg-panel"
+                  }`}
                 >
                   {t("quick_filters.has_seats")}
                 </Link>
-                {hasActiveFilters && (
+                {hasActiveFilters ? (
                   <Link
                     href={clearFiltersUrl}
                     className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-100"
@@ -298,7 +296,7 @@ export default async function RouteShowPage({ params, searchParams }) {
                     <X className="h-3 w-3" aria-hidden="true" />
                     {t("quick_filters.clear_all")}
                   </Link>
-                )}
+                ) : null}
               </div>
             </div>
           </section>
@@ -314,12 +312,12 @@ export default async function RouteShowPage({ params, searchParams }) {
                       ? t("results_subtitle_filtered", {
                           filtered: trips.length,
                           total: allTrips.length,
-                          date,
+                          date: dateLabel,
                         })
                       : t("results_subtitle", {
                           filtered: trips.length,
                           total: allTrips.length,
-                          date,
+                          date: dateLabel,
                         })}
                   </p>
                 </div>
@@ -381,7 +379,7 @@ export default async function RouteShowPage({ params, searchParams }) {
                     </div>
                   </div>
                 </aside>
-                <div className="space-y-4 lg:col-span-9">
+                <div className="space-y-3 lg:col-span-9">
                   {trips.length > 0 ? (
                     trips.map((trip) => (
                       <TripRowCard
@@ -392,8 +390,21 @@ export default async function RouteShowPage({ params, searchParams }) {
                       />
                     ))
                   ) : (
-                    <div className="rounded-sm border border-dashed border-line-strong bg-surface p-8 text-center text-muted">
-                      <p>{t("no_trips.description")}</p>
+                    <div className="rounded-sm border border-dashed border-line-strong bg-surface px-6 py-12 text-center">
+                      <p className="font-semibold text-ink">
+                        {t("no_trips.title")}
+                      </p>
+                      <p className="mt-2 text-sm text-muted">
+                        {t("no_trips.description")}
+                      </p>
+                      {hasActiveFilters ? (
+                        <Link
+                          href={clearFiltersUrl}
+                          className="ksb-btn-secondary mt-5 inline-flex px-5 text-sm"
+                        >
+                          {t("no_trips.clear_filters_button")}
+                        </Link>
+                      ) : null}
                     </div>
                   )}
                 </div>
@@ -404,8 +415,8 @@ export default async function RouteShowPage({ params, searchParams }) {
       ) : (
         <section className="ksb-section ksb-section-band">
           <div className="container mx-auto max-w-lg px-4 text-center">
-            <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-sm border border-line bg-panel">
-              <CalendarX className="h-10 w-10 text-muted" aria-hidden="true" />
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-sm border border-line bg-panel">
+              <CalendarX className="h-9 w-9 text-muted" aria-hidden="true" />
             </div>
             <h2 className="mb-3 font-display text-2xl font-extrabold text-ink">
               {t("no_trips.title")}
@@ -413,17 +424,15 @@ export default async function RouteShowPage({ params, searchParams }) {
             <p className="mb-8 leading-relaxed text-muted">
               {t("no_trips.description")}
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <a href="#search-section" className="ksb-btn-secondary px-6">
-                {t("no_trips.research_button")}
-              </a>
-            </div>
+            <a href="#search-section" className="ksb-btn-secondary px-6">
+              {t("no_trips.research_button")}
+            </a>
           </div>
         </section>
       )}
-      {trips.length > 0 && (
+      {trips.length > 0 ? (
         <MobileStickyBookingBar lowestPrice={lowestPrice} locale={locale} />
-      )}
+      ) : null}
     </main>
   );
 }

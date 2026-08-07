@@ -19,7 +19,7 @@ const DESTINATIONS = [
   },
 ];
 
-/** Port of the right-column aside (support CTA, destination teasers, popular-page links) in page/show.blade.php. */
+/** Right-column aside: support CTA, destination teasers, popular-page links. */
 export function CmsPageSidebar({ t, locale }) {
   const routesIndexHref = localePath(locale, CLIENT_ROUTES.routesIndex);
   return (

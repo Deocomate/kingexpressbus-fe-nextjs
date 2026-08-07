@@ -19,7 +19,7 @@ import { ApiError } from "@/services/api-base";
 import { register, isSafeRedirectPath } from "@/services/client-auth";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
-/** Port of client/auth/register.blade.php — see login-form.tsx for the split rationale. */
+/** Register form — see login-form for the split rationale. */
 export function RegisterForm({ locale, redirectTo }) {
   const t = useTranslations("client.auth.register");
   const tValidation = useTranslations("client.auth.validation");
@@ -69,7 +69,7 @@ export function RegisterForm({ locale, redirectTo }) {
       router.refresh();
     } catch (err) {
       // Best-effort field targeting: the API doesn't return structured
-      // per-field validation errors like Laravel's unique() rule does, only
+      // per-field validation errors; only
       // a free-text `detail` string on 422/400. Sniff for "phone" to route
       // the message to the phone field, otherwise assume email conflict
       // (the far more common case — email is required & unique).

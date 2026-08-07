@@ -2,8 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
-// Same [dialCode, iso2, name] list as create.blade.php's inline script,
-// ported verbatim so the searchable country dropdown matches 1:1.
+// Dial-code list for the searchable country dropdown.
 const COUNTRIES = [
   ["+84", "vn", "Việt Nam"],
   ["+1", "us", "United States"],
@@ -85,7 +84,7 @@ const DEFAULT_DIAL_CODE = "+84";
 const DEFAULT_ISO2 = "vn";
 
 /**
- * Port of the vanilla-JS "phone-input-wrapper" widget in create.blade.php:
+ * Phone country dial-code input:
  * flag button -> searchable country dropdown, editable dial-code field,
  * and a number field that auto-detects a pasted "+<dialcode><number>".
  * Emits the combined E.164-ish string ("+84912345678") via onChange.

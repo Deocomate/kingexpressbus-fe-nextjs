@@ -1,7 +1,7 @@
 import { Phone, Ticket } from "lucide-react";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
-/** Port of the closing dark CTA band in contact/index.blade.php. */
+/** Closing dark CTA band on the contact page. */
 export function ContactCtaSection({ t, locale, hotline }) {
   return (
     <section className="ksb-section-cta px-4">

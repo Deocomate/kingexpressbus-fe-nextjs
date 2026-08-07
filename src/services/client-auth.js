@@ -98,7 +98,7 @@ export function resetPassword(input) {
 }
 
 /**
- * Port of AuthController::resolveRedirect() (Laravel). Only relative,
+ * Only relative,
  * same-origin paths are honored — anything else falls back to the caller's default.
  * @param {string|null|undefined} path
  * @returns {path is string}

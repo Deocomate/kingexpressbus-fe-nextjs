@@ -2,10 +2,7 @@ import { Gem, Headset, ShieldCheck, Star } from "lucide-react";
 const WHY_CHOOSE_ICONS = [Star, ShieldCheck, Headset, Gem];
 
 /**
- * Port of the "Position & Milestones" section in about/index.blade.php:
- * position copy + why-choose feature grid on the left, image collage +
- * year timeline on the right. `timelineItems` mirrors Blade's inline
- * `$timelineItems` array (2017 / 2021 / current year).
+ * Position & Milestones section: narrative copy and year timeline.
  */
 export function AboutPositionSection({ t }) {
   const whyChooseItems = t.raw("about.why_choose.items");

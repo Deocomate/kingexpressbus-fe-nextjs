@@ -10,7 +10,7 @@ import { AboutPopularRoutesSection } from "@/components/client/about/about-popul
 import { AboutDestinationsSection } from "@/components/client/about/about-destinations-section";
 import { AboutCtaSection } from "@/components/client/about/about-cta-section";
 
-// Blade's `$stats['bus_count'] ?? 10` fallback — see about-stat-bar-section.tsx doc comment.
+// `bus_count` fallback of 10 — see about-stat-bar-section.tsx doc comment.
 const FALLBACK_BUS_COUNT = 10;
 const FOUNDING_YEAR = 2017;
 export async function generateMetadata({ params }) {

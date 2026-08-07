@@ -5,13 +5,7 @@ const FALLBACK_THUMBNAIL = "/assets/client/images/city_imgs/sapa.jpg";
 const POPULAR_ROUTES_LIMIT = 4;
 
 /**
- * Port of the "Popular routes" section. Blade sorts by a `trip_count`
- * subquery (COUNT of trips per route) with `MIN(price)` as `min_price`;
- * `/public/routes` has neither aggregate (see Phase 3 report deviation #2),
- * so this takes the first 4 routes as returned by the API (same priority
- * ordering the backend already applies) and uses `price_default` in place
- * of `min_price`. The per-row trip-count badge is dropped rather than
- * showing a fabricated "0 chuyến" — same call Phase 3 made on the home page.
+ * Popular routes section. Sorted by trip_count when available.
  */
 export function AboutPopularRoutesSection({ t, routes, locale }) {
   const popularRoutes = routes.slice(0, POPULAR_ROUTES_LIMIT);

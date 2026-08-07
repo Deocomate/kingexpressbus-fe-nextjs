@@ -2,10 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Port of the Alpine `statsCounter(target, step, speed, formatNumber)`
- * component in about/index.blade.php: counts up from 0 to `target` once the
- * article scrolls into view, then stops. `format` mirrors Blade's
- * `toLocaleString()` call for the bookings stat (10,000+).
+ * Counts up from 0 to `target` once the article scrolls into view.
+ * `format` uses toLocaleString-style formatting for large stats.
  */
 export function AboutStatCounter({ target, step, speed, format, label }) {
   const [count, setCount] = useState(0);

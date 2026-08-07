@@ -63,8 +63,8 @@ function StopColumn({
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-3 rounded-admin-md border border-admin-border bg-admin-surface p-3">
-      <div>
+    <div className="flex min-h-0 flex-1 flex-col gap-4 rounded-admin-md border border-admin-border bg-slate-50 p-4">
+      <div className="space-y-1">
         <h3 className="text-sm font-semibold text-admin-ink">{title}</h3>
         <p className="text-xs text-admin-muted">
           Chọn điểm dừng thuộc 2 tỉnh của tuyến
@@ -94,11 +94,14 @@ function StopColumn({
       </div>
 
       {items.length === 0 ? (
-        <p className="text-sm text-admin-muted">Chưa có điểm nào.</p>
+        <p className="rounded-admin-md border border-dashed border-admin-border bg-admin-surface px-3 py-4 text-sm text-admin-muted">
+          Chưa có điểm nào.
+        </p>
       ) : (
         <ReorderList
           items={items}
           onOrderChange={onReorder}
+          className="min-w-0"
           renderLabel={(item) => (
             <div className="flex flex-1 items-center justify-between gap-2">
               <div className="min-w-0">
@@ -210,11 +213,11 @@ export function RouteStopsEditor({
             Điểm đón / trả — {routeName}
           </DialogTitle>
         </DialogHeader>
-        <DialogBody className="space-y-4">
+        <DialogBody className="space-y-4 px-6 py-5">
           {loading ? (
             <p className="text-sm text-admin-muted">Đang tải…</p>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-5 md:grid-cols-2">
               <StopColumn
                 title="Điểm đón"
                 stopType="pickup"

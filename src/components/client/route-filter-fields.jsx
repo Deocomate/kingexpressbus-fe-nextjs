@@ -8,13 +8,7 @@ import {
 } from "lucide-react";
 
 /**
- * Port of routes/partials/filter-form.blade.php. Blade's version also has a
- * "bus type" (dòng xe) checkbox group backed by `$filters['bus_categories']`
- * — the public trip-search API has no bus-category field at all (only
- * `bus_model`, a free-text string), so that group is dropped rather than
- * faked. Collapsible accordion behaviour (JS-toggled `.filter-content`) is
- * also not ported: sections render always-expanded, which is visually
- * equivalent minus the collapse animation — documented in the phase report.
+ * Route list filter fields (origin/destination/date).
  */
 export function RouteFilterFields({
   filterState,

@@ -7,7 +7,7 @@ import { ContactSupportSection } from "@/components/client/contact/contact-suppo
 import { ContactFaqMapSection } from "@/components/client/contact/contact-faq-map-section";
 import { ContactCtaSection } from "@/components/client/contact/contact-cta-section";
 
-// Blade's `$stats['bus_count']`/`trip_count` have no public-API source (only
+// `bus_count`/`trip_count` stats have no public-API source (only
 // route_count is derivable from `/public/routes`) — see contact-hero-section
 // usage below for the deviation this constant documents.
 const FALLBACK_BUS_COUNT = 10;

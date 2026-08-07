@@ -1,8 +1,7 @@
 import { routing } from "@/i18n/routing";
 
 /**
- * VN slug segments kept verbatim from routes/web.php so legacy links,
- * bookmarks, and SEO keep working once mounted under /[locale]/...
+ * Client URL path segments (Vietnamese slugs for SEO and bookmarks).
  */
 export const CLIENT_ROUTES = {
   home: "/",

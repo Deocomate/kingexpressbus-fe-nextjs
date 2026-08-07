@@ -3,12 +3,9 @@ import { SearchBar } from "@/components/client/search-bar";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
 /**
- * Port of the hero + proof-strip aside in about/index.blade.php. Blade's
- * `data-aos` scroll-reveal is dropped in favor of this app's existing
- * `Reveal`/`.ksb-reveal` IntersectionObserver contract (see reveal.tsx) is
- * *not* applied here to keep this a server component — the hero is above
- * the fold and always visible on load in Blade too (AOS `once: true`
- * animates it in immediately since it's in the initial viewport).
+ * About-page hero and proof-strip aside.
+ * Kept as a server component (no Reveal animation) — the hero is above
+ * the fold and visible on first paint.
  */
 export function AboutHeroSection({ locale, provinces, t }) {
   return (

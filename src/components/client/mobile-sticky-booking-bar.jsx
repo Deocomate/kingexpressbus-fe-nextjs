@@ -4,9 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 /**
- * Port of the `#mobile-booking-bar` IntersectionObserver toggle in
- * routes/show.blade.php: hidden while `#availabilities` is on screen,
- * slides up once the user scrolls past it.
+ * Mobile sticky booking bar on the route detail page.
+ * Hidden while `#availabilities` is on screen.
  */
 export function MobileStickyBookingBar({ lowestPrice, locale }) {
   const t = useTranslations("client.route_show");

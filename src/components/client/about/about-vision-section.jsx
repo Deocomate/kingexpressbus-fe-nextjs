@@ -2,9 +2,7 @@ import { Bolt, Earth, Gem, Heart, ShieldCheck } from "lucide-react";
 const CORE_VALUE_ICONS = [ShieldCheck, Gem, Heart, Bolt];
 
 /**
- * Port of the "Vision / Mission / Core values" band in about/index.blade.php
- * (`.about-editorial-band`): vision statement + 2 hero images, mission
- * split (customers/society), then core-values label + item rows.
+ * Vision / Mission / Core values band on the about page.
  */
 export function AboutVisionSection({ t }) {
   const coreValueItems = t.raw("about.core_values.items");

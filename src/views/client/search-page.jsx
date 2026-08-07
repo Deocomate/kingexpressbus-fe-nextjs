@@ -4,19 +4,10 @@ import { listRoutes } from "@/services/booking-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
 /**
- * Port of SearchController::search() (routes.search / `/tim-kiem`). Blade
- * has no dedicated results template here — it's a GET-only redirect: given
- * origin/destination province ids + a departure date, it resolves the
- * matching route and 302s to `client.routes.show`. `search-bar.jsx`
- * (Phase 2) already performs this resolution client-side and pushes
- * straight to the route page, so this route mainly exists for parity with
- * legacy/bookmarked links that hit `/tim-kiem?...` directly.
- *
- * Deviation: Blade's controller also accepts `origin_type`/`destination_type`
- * of district/stop (resolved via `RouteService::resolveProvinceId`) — the
- * public API only exposes province-level routes/search, so only
- * `origin_id`/`destination_id` (treated as province ids) are honored here,
- * consistent with search-bar.tsx's province-only dropdown.
+ * `/tim-kiem` search redirect: given origin/destination province ids and a
+ * departure date, resolve the matching route and redirect to the route page.
+ * Exists mainly for bookmarked `/tim-kiem?...` links; search-bar already
+ * resolves client-side. Only province-level ids are honored.
  */
 export default async function SearchRedirectPage({ params, searchParams }) {
   const { locale } = await params;

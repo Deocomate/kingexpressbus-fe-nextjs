@@ -1,8 +1,5 @@
 /**
- * Port of the page-scoped `@push('styles')` block in
- * `client/contact/index.blade.php` (hero background drift animation + the
- * map iframe wrapper). Kept local to this route rather than in the shared
- * `globals.css` — same rationale as `about-page-styles.jsx`.
+ * Contact-page scoped styles (hero drift animation and section layout).
  */
 export function ContactPageStyles() {
   return (

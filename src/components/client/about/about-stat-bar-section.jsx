@@ -1,13 +1,7 @@
 import { AboutStatCounter } from "@/components/client/about/about-stat-counter";
 
 /**
- * Port of the stat-bar section (`#about-content`). Blade's `bookings` stat
- * is a static literal (10000) regardless of DB data — kept as-is. `routes`
- * and `years` come from real data (route list length / computed year
- * delta); `buses` has no public bus-catalog endpoint (see Phase 3 report
- * deviation #1), so it falls back to the same literal (10) Blade itself
- * uses as its `$stats['bus_count'] ?? 10` default when the stat is
- * unavailable — not invented data, Blade's own designed fallback value.
+ * About-page stat bar. Uses a designed fallback of 10 for missing counts.
  */
 export function AboutStatBarSection({ t, stats }) {
   const items = [

@@ -20,21 +20,21 @@ export function DataTableToolbar({
   }, [value]);
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-2">
-      <div className="relative w-full max-w-xs">
+    <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="relative w-full max-w-sm">
         <Search
-          className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-admin-muted-fg"
+          className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-admin-muted-fg"
           aria-hidden="true"
         />
         <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Tìm kiếm…"
-          className="pl-8"
+          className="pl-9"
           aria-label="Tìm kiếm"
         />
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {selectedCount > 0 && onBulkDelete ? (
           <Button variant="destructive" size="sm" onClick={onBulkDelete}>
             <Trash2 className="size-3.5" />

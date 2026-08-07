@@ -190,9 +190,8 @@ export function ProfileBookings({ locale }) {
     try {
       await logout();
     } catch {
-      // Best-effort: even if the API call fails, clear local state and send
-      // the user home — same UX outcome as Blade's session-invalidate-then-
-      // redirect, which never surfaces a logout error to the user either.
+      // Best-effort: even if the API call fails, clear local state and
+      // send the user home without surfacing a logout error.
     } finally {
       router.push(localePath(locale, CLIENT_ROUTES.home));
       router.refresh();

@@ -93,81 +93,90 @@ export function DataTable({
   }
 
   return (
-    <div className="space-y-3">
-      <DataTableToolbar
-        onSearch={search}
-        selectedCount={selectedIds.length}
-        onBulkDelete={onBulkDelete ? handleBulkDelete : undefined}
-        actions={toolbarActions}
-      />
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
+    <div>
+      <div className="px-4 pb-3 pt-4">
+        <DataTableToolbar
+          onSearch={search}
+          selectedCount={selectedIds.length}
+          onBulkDelete={onBulkDelete ? handleBulkDelete : undefined}
+          actions={toolbarActions}
+        />
+      </div>
+      <div className="border-y border-admin-border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {query.isLoading ? (
+              Array.from({ length: 5 }).map((_, i) => (
+                <TableRow key={`sk-${i}`}>
+                  {allColumns.map((_, j) => (
+                    <TableCell key={`sk-${i}-${j}`}>
+                      <Skeleton className="h-4 w-full" />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : query.isError ? (
+              <TableRow>
+                <TableCell
+                  colSpan={allColumns.length}
+                  className="py-8 text-center text-admin-danger"
+                >
+                  Không tải được dữ liệu. Vui lòng thử lại.
+                </TableCell>
+              </TableRow>
+            ) : table.getRowModel().rows.length === 0 ? (
+              <TableRow>
+                <TableCell
+                  colSpan={allColumns.length}
+                  className="py-8 text-center text-admin-muted"
+                >
+                  {emptyMessage}
+                </TableCell>
+              </TableRow>
+            ) : (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
                       )}
-                </TableHead>
-              ))}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {query.isLoading ? (
-            Array.from({ length: 5 }).map((_, i) => (
-              <TableRow key={`sk-${i}`}>
-                {allColumns.map((_, j) => (
-                  <TableCell key={`sk-${i}-${j}`}>
-                    <Skeleton className="h-4 w-full" />
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : query.isError ? (
-            <TableRow>
-              <TableCell
-                colSpan={allColumns.length}
-                className="py-8 text-center text-admin-danger"
-              >
-                Không tải được dữ liệu. Vui lòng thử lại.
-              </TableCell>
-            </TableRow>
-          ) : table.getRowModel().rows.length === 0 ? (
-            <TableRow>
-              <TableCell
-                colSpan={allColumns.length}
-                className="py-8 text-center text-admin-muted"
-              >
-                {emptyMessage}
-              </TableCell>
-            </TableRow>
-          ) : (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
-      <DataTablePagination
-        page={page}
-        pageSize={pageSize}
-        total={total}
-        onPageChange={setPage}
-      />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="px-4 py-3">
+        <DataTablePagination
+          page={page}
+          pageSize={pageSize}
+          total={total}
+          onPageChange={setPage}
+        />
+      </div>
     </div>
   );
 }

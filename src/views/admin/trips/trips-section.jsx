@@ -122,7 +122,7 @@ export function TripsSection() {
     <div className="space-y-4">
       <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
         <AdminCard title="Tỉnh đi">
-          <div className="space-y-2 p-4">
+          <div className="space-y-2">
             <p className="text-xs text-admin-muted">
               Chọn tỉnh/thành phố khởi hành để lọc chuyến.
             </p>
@@ -145,7 +145,7 @@ export function TripsSection() {
         </div>
 
         <AdminCard title="Tỉnh đến">
-          <div className="space-y-2 p-4">
+          <div className="space-y-2">
             <p className="text-xs text-admin-muted">
               Chọn tỉnh/thành phố điểm đến để lọc chuyến.
             </p>
@@ -164,7 +164,7 @@ export function TripsSection() {
 
       {!corridorReady ? (
         <AdminCard>
-          <div className="flex flex-col items-center justify-center gap-3 px-4 py-12 text-center">
+          <div className="flex flex-col items-center justify-center gap-3 py-12 text-center">
             <div className="flex size-12 items-center justify-center rounded-full bg-slate-100 text-admin-muted">
               <MapPinned className="size-5" />
             </div>

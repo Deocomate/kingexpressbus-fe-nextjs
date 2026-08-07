@@ -9,8 +9,7 @@ import { CmsPageSidebar } from "@/components/client/cms-page/cms-page-sidebar";
 
 /**
  * Resolves title/description for the two supported fallback slugs
- * (see `resolveCmsPageContent` in client-api.ts for why only these two).
- * Mirrors PageController::resolveFallbackPage()'s per-slug title/description.
+ * (see `resolveCmsPageContent` in client-api for why only these two).
  */
 async function resolvePageMeta(locale, slug) {
   if (slug === "gioi-thieu") {
@@ -59,7 +58,7 @@ export default async function CmsPage({ params }) {
   ]);
   const content = resolveCmsPageContent(webProfile, slug);
   if (!content) notFound();
-  const updatedAtDisplay = null; // WebProfile doesn't expose an `updated_at` timestamp publicly; Blade only shows this badge when one is present.
+  const updatedAtDisplay = null; // WebProfile doesn't expose an `updated_at` timestamp publicly; Shown only when one is present.
 
   return (
     <main>

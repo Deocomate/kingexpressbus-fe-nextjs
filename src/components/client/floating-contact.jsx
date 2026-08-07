@@ -2,9 +2,7 @@ import { Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 /**
- * Port of floating-contact.blade.php. Purely presentational (no client
- * interactivity in the Blade original either — the messenger/zalo/hotline
- * items are plain links), so this stays a server component.
+ * Floating contact affordances (messenger / Zalo / hotline). Presentational only.
  */
 export async function FloatingContact({ locale, webProfile }) {
   const t = await getTranslations({

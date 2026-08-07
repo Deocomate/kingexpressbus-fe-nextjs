@@ -1,11 +1,6 @@
 /**
- * Port of the page-scoped `@push('styles')` block in
- * `client/about/index.blade.php` (hero background/animation, image masks,
- * timeline rail, route-row/value-row borders, cta band background). These
- * classes are specific to this one route and were never part of the shared
- * `globals.css` design-token set ported in Phase 2/3, so they live here
- * instead of touching that shared file. Values copied verbatim from the
- * Blade `<style>` block.
+ * About-page scoped styles (hero, masks, timeline, CTA band).
+ * Kept here instead of globals.css because they are route-specific.
  */
 export function AboutPageStyles() {
   return (

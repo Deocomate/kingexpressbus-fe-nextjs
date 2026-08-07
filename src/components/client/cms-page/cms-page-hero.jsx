@@ -1,7 +1,7 @@
 import { Clock, ShieldCheck, Sparkles } from "lucide-react";
 import { SearchBar } from "@/components/client/search-bar";
 
-/** Port of the hero/search section in page/show.blade.php. */
+/** CMS page hero/search section. */
 export function CmsPageHero({ t, locale, provinces, title, updatedAtDisplay }) {
   return (
     <section className="page-hero-bg ksb-section-hero relative z-elevated overflow-visible px-4">

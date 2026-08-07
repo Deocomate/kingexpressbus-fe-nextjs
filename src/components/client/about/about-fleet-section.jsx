@@ -17,7 +17,7 @@ const FLEET_CARDS = [
   },
 ];
 
-/** Port of the fleet showcase section (highlight image + feature list + 3 fleet cards). */
+/** Fleet showcase section (highlight image + feature list + 3 fleet cards). */
 export function AboutFleetSection({ t }) {
   const features = t.raw("about.fleet.features");
   return (

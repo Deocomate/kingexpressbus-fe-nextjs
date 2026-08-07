@@ -313,7 +313,7 @@
         "sold_out_button": "Hết chỗ",
         "off_day_button": "Ngừng chạy",
         "off_day_badge": "Ngừng chạy",
-        "seats_left": "Còn :count chỗ",
+        "seats_left": "Còn {count} chỗ",
         "details_button": "Xem chi tiết"
       },
       "no_trips": {

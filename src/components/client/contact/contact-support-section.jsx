@@ -1,14 +1,7 @@
 import { Headset, Info, Mail, MessageCircle, PhoneCall } from "lucide-react";
 
 /**
- * Port of the "Support channels / Working hours / Offices" section.
- * Facebook uses a hand-drawn inline glyph (same call Phase 2 made for
- * footer.tsx/floating-contact.tsx — no Font Awesome dependency in this app).
- * The office list is always empty: `stops`/offices require joining
- * district+province names, which is only exposed via the admin-authenticated
- * `/admin/locations/stops` endpoint (see kingexpressbus-backend-python/app/api/v1/admin/locations.py),
- * not a public one — rendering the same `no_offices` fallback Blade itself
- * shows when the query returns nothing, rather than fabricating entries.
+ * Support channels, working hours, and offices section.
  */
 function FacebookGlyph({ className }) {
   return (

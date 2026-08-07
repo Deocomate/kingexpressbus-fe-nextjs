@@ -68,7 +68,7 @@ export default async function BookingSuccessPage({ params, searchParams }) {
     : (pickupStop?.name ?? tCommon("updating"));
   const pickupAddress = hotelPickupAddress ?? pickupStop?.address ?? "";
   // `sepay_returned=1` is appended by /dat-ve/sepay/thanh-cong/{code} right
-  // before it redirects here — the equivalent of Blade's
+  // before it redirects here — equivalent to
   // `sepay_payment_returned` flash session flag, since this app has no
   // server-side flash/session mechanism to carry that across the redirect.
   const isVerifying = isAwaitingPaymentRequest && sepayReturned === "1";

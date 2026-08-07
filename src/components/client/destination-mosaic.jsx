@@ -1,9 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 /**
- * Port of HomeService::getFeaturedDestinations() — a static curated list of
- * city tiles (not DB-backed in Blade either), rendered into the
- * `.ksb-destination-mosaic` bento-grid layout from home/index.blade.php.
+ * Static curated destination tiles for the home mosaic (not DB-backed).
  */
 const DESTINATIONS = [
   {

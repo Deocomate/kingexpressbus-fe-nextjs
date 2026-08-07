@@ -1,4 +1,4 @@
-/* Client design tokens + kx-/ksb- components (ported from Laravel app.css for Tailwind v4). */
+/* Client design tokens + kx-/ksb- components (Tailwind v4). */
 @import "@fontsource/be-vietnam-pro/400.css";
 @import "@fontsource/be-vietnam-pro/500.css";
 @import "@fontsource/be-vietnam-pro/600.css";
@@ -65,6 +65,9 @@
   --z-index-drawer: 60;
   --z-index-modal: 70;
   --z-index-alert: 80;
+  /* Shared Dialog/Sheet/Popover (admin UI primitives used on client too) */
+  --z-admin-overlay: 70;
+  --z-admin-popover: 110;
   --animate-reveal-up: reveal-up 200ms ease-out both;
 }
 
@@ -686,9 +689,7 @@ html {
     }
 
     /*
-     * Kept as `.ksb-reveal` (not renamed to `.reveal`) so pages not yet
-     * migrated to the new design system keep working with the same
-     * IntersectionObserver hook in resources/js/modules/reveal.js.
+     * `.ksb-reveal` scroll-reveal hook used by the Reveal component.
      */
     .ksb-reveal {
         opacity: 1;
@@ -1076,6 +1077,8 @@ html {
   }
 
   .z-elevated { z-index: var(--z-index-elevated); }
+  .z-header-menu { z-index: var(--z-index-header-menu); }
+  .z-modal { z-index: var(--z-index-modal); }
   .kx-header--scrolled {
     box-shadow: 0 8px 24px -16px rgba(4, 17, 31, 0.35);
   }

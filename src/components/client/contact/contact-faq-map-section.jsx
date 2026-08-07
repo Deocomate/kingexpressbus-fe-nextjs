@@ -1,6 +1,6 @@
 import { ContactFaqAccordion } from "@/components/client/contact/contact-faq-accordion";
 
-/** Port of the FAQ (left column) + map embed (right column) section. */
+/** FAQ (left) + map embed (right) section on the contact page. */
 export function ContactFaqMapSection({ t, mapEmbedSrc }) {
   const faqItems = t.raw("faq_items");
   return (

@@ -1,7 +1,5 @@
 /**
- * Port of the page-scoped `@push('styles')` block in
- * `client/page/show.blade.php` (hero background drift + prose heading/link
- * color overrides layered on top of the shared `.kx-prose` base).
+ * CMS-page scoped styles (hero drift + prose heading/link tweaks).
  */
 export function CmsPageStyles() {
   return (

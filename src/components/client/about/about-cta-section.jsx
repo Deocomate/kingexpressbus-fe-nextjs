@@ -1,7 +1,7 @@
 import { Bolt, Headset } from "lucide-react";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
-/** Port of the closing dark CTA band in about/index.blade.php. */
+/** Closing dark CTA band on the about page. */
 export function AboutCtaSection({ t, locale }) {
   return (
     <section className="about-cta-band px-4 py-14 md:py-16">

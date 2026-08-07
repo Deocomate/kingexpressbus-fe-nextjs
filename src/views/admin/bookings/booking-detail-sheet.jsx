@@ -85,6 +85,20 @@ export function BookingDetailDialog({
           <Row label="Khách hàng" value={booking.customer_name} />
           <Row label="Điện thoại" value={booking.customer_phone} />
           <Row label="Email" value={booking.customer_email ?? "—"} />
+          <Row
+            label="Ngày đặt"
+            value={
+              booking.created_at
+                ? new Date(booking.created_at).toLocaleString("vi-VN", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })
+                : "—"
+            }
+          />
           <Row label="Ngày đi" value={booking.booking_date} />
           <Row label="Số lượng" value={booking.quantity} />
           <Row

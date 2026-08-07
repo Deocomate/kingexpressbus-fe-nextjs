@@ -17,11 +17,7 @@ import { login, isSafeRedirectPath } from "@/services/client-auth";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
 /**
- * Port of client/auth/login.blade.php. Kept as a single self-contained
- * client component (welcome panel + form) rather than splitting the static
- * copy into the server page, matching this codebase's existing pattern for
- * client/* components (nav-bar, search-bar, etc.) and Blade's own structure
- * (the whole page markup lives in one view file).
+ * Login form — self-contained client component (welcome panel + form).
  */
 export function LoginForm({ locale, redirectTo }) {
   const t = useTranslations("client.auth.login");
@@ -55,7 +51,7 @@ export function LoginForm({ locale, redirectTo }) {
     setSubmitting(true);
     try {
       // Backend only authenticates by email; phone-based login (supported by
-      // the Blade form's combined "login" field) isn't exposed by this API's
+      // the form's combined "login" field) isn't exposed by this API's
       // /auth/login endpoint. See phase report for detail.
       await login({
         email: loginValue.trim(),

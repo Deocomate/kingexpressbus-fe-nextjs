@@ -23,7 +23,7 @@ const DESTINATION_CARDS = [
   },
 ];
 
-/** Port of the destination bento-mosaic section (first tile spans 2 cols/2 rows on large screens). */
+/** Destination bento-mosaic section (first tile spans 2 cols/2 rows on large screens). */
 export function AboutDestinationsSection({ t, locale }) {
   const routesIndexHref = localePath(locale, CLIENT_ROUTES.routesIndex);
   return (

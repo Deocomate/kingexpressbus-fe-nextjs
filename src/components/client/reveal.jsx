@@ -2,10 +2,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Port of resources/js/modules/reveal.js: adds `.is-visible` to `.ksb-reveal`
- * elements once they intersect the viewport. The DOM hook name is kept
- * because it is documented in design-guidelines.md as the reveal contract,
- * not because any Blade script still queries it.
+ * Adds `.is-visible` to `.ksb-reveal` elements once they enter the viewport.
  */
 export function Reveal({ children, className }) {
   const ref = useRef(null);
