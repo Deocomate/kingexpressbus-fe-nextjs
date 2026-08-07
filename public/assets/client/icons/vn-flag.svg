@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.62 16">
+  <defs>
+    <style>
+      .vn-flag1 {
+        fill: red;
+      }
+
+      .vn-flag2{
+        fill: #ffd95a;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g transform="translate(-5 -17)">
+    <rect class="vn-flag1" width="24.42" height="16" transform="translate(5 17)"/>
+    <path class="vn-flag2" d="M4.435,7.038,2.981,11.582,6.687,8.7l3.884,2.7-.013-.038-.026-.076.082.057L9.1,6.988l3.452-2.351-4.3-.024L6.687,0,5.216,4.6.9,4.572Z" transform="translate(10.104 19)"/>
+  </g>
+</svg>

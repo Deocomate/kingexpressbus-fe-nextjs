@@ -1,0 +1,1196 @@
+{
+  "common": {
+    "brand": "King Express Bus"
+  },
+  "client": {
+    "profile": {
+      "meta_title": "My Account - King Express Bus"
+    },
+    "page": {
+      "meta_title": "Information - King Express Bus",
+      "default_title": "Content Page",
+      "default_excerpt": "Summary content from King Express Bus.",
+      "policy": {
+        "title": "Customer Support Policies",
+        "description": "Booking, payment, and customer support policies of King Express Bus."
+      }
+    },
+    "nav": {
+      "languages": {
+        "vi": "Tiếng Việt",
+        "en": "English"
+      },
+      "language_switch": "Switch to :language",
+      "hotline": "Hotline",
+      "account": "My account",
+      "login": "Log in",
+      "register": "Sign up",
+      "logout": "Log out",
+      "home_aria": "Go to homepage",
+      "open_menu": "Open navigation menu",
+      "close_menu": "Close navigation menu",
+      "language": "Language",
+      "aria_main": "Main navigation",
+      "aria_mobile": "Mobile navigation",
+      "search_bus": "Search Bus",
+      "home": "Home",
+      "routes": "Routes",
+      "companies": "Operators",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "layout": {
+      "profile": "My profile",
+      "my_bookings": "My bookings",
+      "warning_holiday_ticket": "Note: Ticket reservation is not guaranteed before holidays/Tet if not paid.",
+      "close_warning": "Close warning"
+    },
+    "common": {
+      "contact_price": "Contact",
+      "contact": "Contact",
+      "not_available": "Not available",
+      "ok": "OK"
+    },
+    "seo": {
+      "default_description": "Book bus tickets online - Connecting thousands of high-quality coach routes across Vietnam. Easy booking, secure payment.",
+      "default_keywords": "bus tickets, limousine bus, sleeper bus, Hanoi Sa Pa, King Express Bus, online tickets, premium coach"
+    },
+    "footer": {
+      "default_description": "Trusted coach service with premium cabins and nationwide partners.",
+      "about": "About us",
+      "links": {
+        "intro": "Introduction",
+        "fleet": "Fleet",
+        "news": "News",
+        "routes": "Routes",
+        "companies": "Operators",
+        "contact": "Contact"
+      },
+      "support": "Support",
+      "support_links": {
+        "cancellation": "Ticket cancellation policy",
+        "terms": "Terms of service",
+        "privacy": "Privacy policy"
+      },
+      "contact": "Contact",
+      "hotline_label": "Hotline",
+      "rights": "All rights reserved."
+    },
+    "search": {
+      "origin_icon_alt": "Departure point",
+      "origin_label": "Origin",
+      "origin_placeholder": "Select pickup point",
+      "swap_aria": "Swap origin and destination",
+      "destination_icon_alt": "Destination point",
+      "destination_label": "Destination",
+      "destination_placeholder": "Select drop-off point",
+      "departure_icon_alt": "Departure date",
+      "departure_label": "Departure date",
+      "date_placeholder": "Select a date",
+      "add_return": "Add return date",
+      "return_icon_alt": "Return date",
+      "return_label": "Return date",
+      "remove_return_aria": "Remove return date",
+      "submit": "Find routes",
+      "no_results": "No matching locations found.",
+      "validation": {
+        "select_suggestion": "Please choose a location from the suggestions.",
+        "different_locations": "Origin and destination must be different."
+      },
+      "loading": "Searching...",
+      "types": {
+        "province": "Province/City",
+        "district": "District",
+        "stop": "Pickup/Drop-off point"
+      }
+    },
+    "home": {
+      "meta": {
+        "title_default": "King Express Bus - Safe journeys, premium experience",
+        "description_default": "Premium intercity coach service featuring business-class limousines, deluxe sleepers, and a nationwide partner ecosystem."
+      },
+      "meta_title": "Home - King Express Bus",
+      "popular_routes_title": "Popular Routes",
+      "hero": {
+        "brand_promo": "King Express Bus",
+        "slide_1_title": "Premium Journey Hanoi - Sa Pa",
+        "slide_1_subtitle": "Private cabins, daily departures, drop-off in Sa Pa center.",
+        "slide_1_cta": "Book Now",
+        "slide_2_title": "Experiencing Ninh Binh Made Easy",
+        "slide_2_subtitle": "Ideal for visiting Tam Coc, Trang An, with flexible schedules.",
+        "slide_2_cta": "View Schedule",
+        "slide_3_title": "Luxurious Hue - Hoi An",
+        "slide_3_subtitle": "9-seat limousine and sleeper buses for your comfortable rest.",
+        "slide_3_cta": "Discover Now"
+      },
+      "popular_routes": {
+        "title": "Popular routes",
+        "description": "Choose trusted journeys with transparent fares and plenty of departure times.",
+        "cta": "Discover more routes",
+        "duration_pending": "Updating",
+        "company_count": "{0}No operators|{1}:count operator|[2,*]:count operators",
+        "price_from": "From :price₫",
+        "price_contact": "Contact for price",
+        "details": "View details"
+      },
+      "bus_highlights": {
+        "title": "Premium fleet",
+        "description": "Private cabins, smart sleeper berths, and top-tier amenities.",
+        "model_fallback": "Comfort line"
+      },
+      "featured_companies": {
+        "title": "Featured partners",
+        "description": "Partner operators that keep passengers confident on every journey.",
+        "cta": "View partner list",
+        "route_count": "{0}No active routes|{1}:count active route|[2,*]:count active routes",
+        "details": "View details"
+      },
+      "service_highlights": {
+        "title": "Signature amenities",
+        "description": "Amenities deployed consistently across the King Express Bus fleet.",
+        "item_description_default": "Standard amenities on all King Express Bus vehicles."
+      },
+      "default_services": {
+        "item_1_title": "Private Cabin",
+        "item_1_description": "Discreet cabin space, smooth start, and full amenities.",
+        "item_2_title": "Smart Utilities",
+        "item_2_description": "Warm blankets, chargers, TV, automatic air conditioning on every trip.",
+        "item_3_title": "24/7 Support",
+        "item_3_description": "Our call center is always ready to assist you on every journey."
+      },
+      "media_showcase": {
+        "title": "Journey snapshots",
+        "description": "Experience every moment from the cabin to the destination.",
+        "item_1_title": "Limousine Cabin Space",
+        "item_1_description": "Private cabin, curtains, and upgraded seats.",
+        "item_2_title": "Smart Sleeper Berth",
+        "item_2_description": "Efficient layout, safe boarding, suitable for overnight travel.",
+        "item_3_title": "Central Bus Station",
+        "item_3_description": "Pickup and drop-off points are located in the city center for convenience."
+      },
+      "gallery": {
+        "title": "Photo gallery",
+        "description": "Memorable scenes along every route ahead.",
+        "item_1_title": "Luxurious Waiting Lounge",
+        "item_2_title": "Scenery of Hoi An",
+        "item_3_title": "Green Ninh Binh",
+        "item_4_title": "Hanoi at Night"
+      },
+      "testimonials": {
+        "title": "Customer feedback",
+        "description": "Real reviews from passengers who travelled with King Express Bus.",
+        "route_prefix": "Route :route",
+        "item_1_route": "Hanoi - Sa Pa",
+        "item_1_quote": "Clear schedule, enthusiastic and attentive support staff.",
+        "item_2_route": "Hue - Hoi An",
+        "item_2_quote": "The bus is beautiful, clean, and the sleeper is comfortable. I will recommend it to friends.",
+        "item_3_route": "Hanoi - Ninh Binh",
+        "item_3_quote": "Suitable for families, safe travel, and on-time pickups and drop-offs."
+      },
+      "partners": {
+        "title": "Strategic partners",
+        "description": "Collaborating with reputable operators nationwide to maintain service quality.",
+        "cta": "See all partners",
+        "logo_alt": "King Express Bus partner"
+      }
+    },
+    "routes": {
+      "index": {
+        "meta_title": "All Routes - King Express Bus",
+        "meta_description": "Explore over 100+ premium bus routes. Book bus tickets online easily and conveniently with King Express Bus.",
+        "badge": "FIND ROUTES",
+        "hero_title": "Find and book bus tickets",
+        "hero_subtitle": "Over 100 routes nationwide — book online quickly and securely",
+        "popular_searches": "Popular:",
+        "scroll_hint": "Scroll down",
+        "stat_routes": "Routes",
+        "stat_companies": "Partner operators",
+        "stat_fleet": "Fleet",
+        "stat_customers": "Customers per year",
+        "stat_satisfaction": "Satisfied",
+        "companies": "operators",
+        "all_provinces": "All",
+        "trending_badge": "Trending",
+        "popular_title": "Popular",
+        "popular_highlight": "Routes",
+        "popular_subtitle": "Most loved routes by our customers",
+        "view_all": "View all",
+        "trips": "trips",
+        "from": "From",
+        "view_all_routes": "View all routes",
+        "empty": "No matching routes yet. Please try a different filter or check back later.",
+        "cta_title": "Ready for your next trip?",
+        "cta_subtitle": "Book today to get exclusive deals",
+        "cta_button": "Book now",
+        "typing_1": "Find and book bus tickets",
+        "typing_2": "Hanoi - Sapa",
+        "typing_3": "100+ routes",
+        "typing_4": "Quality coaches"
+      }
+    },
+    "route_show": {
+      "meta_title": "Route Information",
+      "meta_title_dynamic": ":name Bus Tickets",
+      "meta_description_dynamic": "Book tickets for the :name route with King Express Bus.",
+      "hero_brand": "King Express Bus Route",
+      "hero_origin": "Origin",
+      "hero_destination": "Destination",
+      "hero_operators": "Operators",
+      "hero_operator_count": ":count operators",
+      "hero_price_label": "Reference Price",
+      "hero_trip_count": ":count trips/day",
+      "hero_trips": "Schedule",
+      "price_from": "From {price}",
+      "price_contact": "Contact for price",
+      "search_submit_label": "Change & Find Again",
+      "trust": {
+        "safe_booking": "Safe Booking",
+        "support_247": "24/7 Support",
+        "easy_refund": "Easy Refund",
+        "best_price": "Best Price"
+      },
+      "results_title": "Available Trips",
+      "results_subtitle": "Showing {filtered} / {total} trips for {date}",
+      "results_subtitle_filtered": "{filtered} / {total} trips • {date}",
+      "quick_filters": {
+        "label": "Quick filters:",
+        "has_seats": "Available",
+        "clear_all": "Clear"
+      },
+      "mobile_bar": {
+        "from": "From",
+        "view_trips": "View Trips"
+      },
+      "filters": {
+        "mobile_button": "Filter Results",
+        "mobile_title": "Filter Results",
+        "sort_title": "Sort by",
+        "sort_recommended": "Recommended",
+        "sort_earliest": "Earliest Departure",
+        "sort_latest": "Latest Departure",
+        "sort_price_low": "Price: Low to High",
+        "sort_price_high": "Price: High to Low",
+        "sort_seats": "Most Seats Available",
+        "price_title": "Ticket Price",
+        "price_from": "From",
+        "price_to": "To",
+        "price_range_note": "Reference price range:",
+        "time_range_title": "Time Range",
+        "time_range_early_morning": "Early Morning (05:00 - 08:00)",
+        "time_range_morning": "Morning (08:00 - 12:00)",
+        "time_range_afternoon": "Afternoon (12:00 - 17:00)",
+        "time_range_evening": "Evening (17:00 - 21:00)",
+        "time_range_night": "Late Night (21:00 - 05:00)",
+        "services_title": "Amenities",
+        "bus_type_title": "Bus Type",
+        "pickup_title": "Pickup Points",
+        "dropoff_title": "Drop-off Points",
+        "apply_button": "Apply Filters",
+        "clear_button": "Clear Filters",
+        "sidebar_title": "Filters",
+        "active": "active"
+      },
+      "trip_card": {
+        "trip_code": "Trip Code",
+        "seats_available": "Available",
+        "seats_full": "Full",
+        "holiday_surcharge_badge": "Holiday surcharge",
+        "duration_label": "Travel time",
+        "duration_format": "{hours}h {minutes}m",
+        "route_timeline_title": "Trip route timeline",
+        "pickup_point": "Pickup point",
+        "dropoff_point": "Drop-off point",
+        "point_count": ":count points",
+        "featured_pickup": "Featured Pickup Points",
+        "featured_dropoff": "Featured Drop-off Points",
+        "not_updated": "Not updated",
+        "more_pickup_points": "+:count more pickup points",
+        "more_dropoff_points": "+:count more drop-off points",
+        "bus_image_alt": "Bus image",
+        "no_services_updated": "Amenities not updated.",
+        "select_trip_button": "Select Trip",
+        "book_button": "Select Trip",
+        "sold_out_button": "Sold Out",
+        "off_day_button": "Not Running",
+        "off_day_badge": "Not Running",
+        "seats_left": ":count seats left",
+        "details_button": "View Details"
+      },
+      "no_trips": {
+        "title": "No suitable trips found",
+        "description": "Please change the departure date or adjust the filters to see more options.",
+        "research_button": "Search Again",
+        "clear_filters_button": "Clear Filters",
+        "suggestion_title": "Suggestions",
+        "suggestion_1": "Try selecting a different date to find more trips",
+        "suggestion_2": "Contact our hotline for booking assistance"
+      },
+      "return_section": {
+        "badge": "Return",
+        "title": "Return direction for your selected date",
+        "subtitle": "Prices are calculated by return date :date and include surcharge when applicable.",
+        "no_trips": "No suitable return trips found for the selected return date."
+      },
+      "tips": {
+        "title": "Tips for You",
+        "description": "A few useful tips to make your trip more comfortable and well-prepared.",
+        "tip_1_title": "Be on Time",
+        "tip_1_content": "Arrive at the pickup point 15 minutes before departure time for check-in.",
+        "tip_2_title": "Light Luggage",
+        "tip_2_content": "Each passenger is allowed a maximum of 10kg carry-on and 20kg checked luggage.",
+        "tip_3_title": "Onboard Amenities",
+        "tip_3_content": "The bus is equipped with blankets, pillows, drinking water, Wi-Fi, and USB charging ports."
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "faq_1_question": "What does the ticket price include?",
+        "faq_1_answer": "The ticket price includes drinking water, blankets, pillows, and basic amenities on the bus. Other additional costs will be announced separately.",
+        "faq_2_question": "Can I choose my seat in advance?",
+        "faq_2_answer": "You can choose your seat during the online booking process. The system will hold the seat for a maximum of 15 minutes during payment.",
+        "faq_3_question": "What is the policy for canceling or changing tickets?",
+        "faq_3_answer": "Contact the call center 12 hours before departure to be assisted with canceling or changing tickets according to the specific regulations of each route."
+      },
+      "details_modal": {
+        "title": "Trip Details",
+        "close": "Close",
+        "overview_title": "Trip overview",
+        "journey_summary": "Route & timing",
+        "gallery_hint": "Click image to preview",
+        "bus_info_title": "Bus Information",
+        "bus_image_alt": "Bus image",
+        "gallery_title": "Gallery",
+        "lightbox_preview_aria": "Image preview",
+        "lightbox_close_aria": "Close",
+        "lightbox_prev_aria": "Previous image",
+        "lightbox_next_aria": "Next image",
+        "lightbox_image_alt": "Preview",
+        "company": "Operator:",
+        "bus_type": "Bus Type:",
+        "bus_details": "Details:",
+        "services_title": "Amenities",
+        "seat_map_title": "Seat Map",
+        "seat_available": "Available",
+        "seat_booked": "Booked",
+        "seat_selected": "Selected",
+        "stops_info_title": "Pickup/Drop-off Information",
+        "pickup_points_title": "Pickup Points",
+        "dropoff_points_title": "Drop-off Points",
+        "status": "Status:",
+        "book_now_button": "Book Now",
+        "not_updated": "Updating",
+        "no_gallery": "No detailed images available.",
+        "no_services": "Amenities not updated.",
+        "no_seat_map": "Seat map has not been updated.",
+        "seat_map_error": "Could not display seat map.",
+        "deck": "Deck"
+      },
+      "bus_categories": {
+        "limousine": "Limousine",
+        "cabin": "Premium Cabin",
+        "sleeper": "Sleeper Bus",
+        "seat": "Seater Bus",
+        "other": "Other Type"
+      },
+      "search": {
+        "invalid_location": "Invalid origin or destination.",
+        "no_route_found": "No suitable route found.",
+        "system_error": "The system is overloaded, please try again later."
+      }
+    },
+    "booking": {
+      "common": {
+        "updating": "Updating"
+      },
+      "service": {
+        "create_success": "Booking created successfully.",
+        "not_available": "Not available",
+        "hotel_pickup_display": "Hotel pickup: :address",
+        "cancel_not_found": "Booking not found.",
+        "cancel_already_cancelled": "This booking has already been cancelled.",
+        "cancel_success": "Booking cancelled successfully.",
+        "cancel_reason_default": "No specific reason provided",
+        "status_not_found": "Booking not found.",
+        "status_update_success": "Booking status updated successfully."
+      },
+      "create": {
+        "meta_title": "Book Tickets - King Express Bus",
+        "meta_description": "Complete your information to book sleeper, cabin, and limousine bus tickets quickly and securely.",
+        "header_subtitle": "Online Booking",
+        "insurance_badge": "Trip Insurance",
+        "error_title": "An error occurred!",
+        "validation_error_title": "Please check your information:",
+        "general_validation_error": "Please check and fill in all required information.",
+        "frontend_pickup_required": "Please select a pickup point.",
+        "frontend_dropoff_required": "Please select a drop-off point.",
+        "frontend_hotel_address_required": "Please enter hotel address.",
+        "frontend_name_required": "Please enter your full name.",
+        "frontend_phone_required": "Please enter your phone number.",
+        "frontend_phone_invalid": "Invalid phone number.",
+        "frontend_email_required": "Please enter your email.",
+        "frontend_email_invalid": "Invalid email address.",
+        "trip_info_title": "Trip Information",
+        "step_1": "Step 1/3",
+        "step_2": "Step 2/3",
+        "step_3": "Step 3/3",
+        "step_trip": "Trip",
+        "step_passenger": "Pickup/Dropoff",
+        "step_confirm": "Passenger",
+        "location_title": "Select Pickup & Drop-off",
+        "hotel_pickup_hanoi_only": "Only available for trips from/to Hanoi",
+        "not_selected": "Not selected",
+        "departure_date_label": "Departure Date",
+        "quantity_label": "Number of Tickets",
+        "tickets_unit": "tickets",
+        "seats_left": "{count, plural, =0 {Sold out} one {{count} seat left} other {{count} seats left}}",
+        "passenger_info_title": "Passenger Information",
+        "name_label": "Full Name",
+        "name_placeholder": "e.g., John Doe",
+        "phone_label": "Phone Number",
+        "phone_placeholder": "Phone to receive ticket info",
+        "search_country_placeholder": "Search country...",
+        "email_label": "Email",
+        "email_placeholder": "Email to receive booking confirmation",
+        "notes_label": "Additional Notes",
+        "notes_placeholder": "e.g., need assistance with hotel pickup...",
+        "pickup_label": "Pickup Point",
+        "pickup_placeholder": "Choose your pickup point",
+        "pickup_at_hotel": "Pickup at hotel",
+        "dropoff_label": "Drop-off Point",
+        "dropoff_placeholder": "Choose your drop-off point",
+        "hotel_address_label": "Hotel Address",
+        "hotel_address_placeholder": "Enter street number, street name, ward...",
+        "payment_method_title": "Payment Method",
+        "payment_online_label": "Bank Transfer",
+        "payment_online_desc": "You will be redirected to SePay secure checkout after booking.",
+        "payment_cash_label": "Pay at Bus Operator Office",
+        "payment_cash_desc": "Pay directly at the bus operator office before departure.",
+        "terms_agreement": "By continuing, you agree to our <a href=\":link\" class=\"font-semibold text-blue-600 hover:underline\">policy</a>.",
+        "terms_link_text": "policy",
+        "confirm_info_label": "I confirm the booking information above is correct.",
+        "frontend_confirm_required": "Please confirm your booking information is correct.",
+        "trust_secure": "Secure information",
+        "trust_support": "24/7 support",
+        "trust_instant": "Fast confirmation",
+        "price_details_title": "Price details",
+        "view_price_details": "View details",
+        "hide_price_details": "Hide",
+        "mobile_total_label": "Total",
+        "search_stop_placeholder": "Search pickup/drop-off...",
+        "no_stop_found": "No matching stop found.",
+        "submit_button": "Confirm Booking",
+        "summary_title": "Cost Summary",
+        "summary_base_price": "Base price per ticket",
+        "summary_global_surcharge": "Holiday surcharge (global)",
+        "summary_route_surcharge": "Route-specific surcharge",
+        "summary_price_per_ticket": "Price per ticket",
+        "summary_contact_price": "Contact",
+        "summary_quantity": "Quantity",
+        "summary_service_fee": "Service Fee",
+        "summary_free": "Free",
+        "summary_total": "Total",
+        "summary_surcharge_note": "Surcharge note",
+        "amenities_title": "Onboard Amenities",
+        "amenity_ac": "Air Conditioner",
+        "amenity_blanket": "Blanket & Pillow",
+        "amenity_water": "Water",
+        "amenity_wifi": "Wi-Fi",
+        "support_title": "Need help?",
+        "support_description": "If you have any questions, please contact us for assistance.",
+        "support_hotline": "Hotline",
+        "support_call_center": "Call Center",
+        "support_email": "Email",
+        "support_zalo": "Chat on Zalo",
+        "support_whatsapp": "Chat on WhatsApp",
+        "support_facebook": "Chat on Facebook",
+        "trip_not_found": "The trip does not exist or has been suspended.",
+        "invalid_date": "Invalid departure date."
+      },
+      "store": {
+        "not_enough_seats": "The trip does not have enough :requested tickets. Only :available tickets left.",
+        "invalid_pickup_stop": "The pickup point is not valid for this trip.",
+        "invalid_dropoff_stop": "The drop-off point is not valid for this trip.",
+        "hotel_pickup_not_available": "Hotel pickup is not available for this trip.",
+        "trip_blocked": "This trip is closed for booking or not operating on this date.",
+        "system_error": "The system is currently overloaded, please try again later."
+      },
+      "sepay": {
+        "redirect_title": "Redirecting to payment gateway",
+        "redirect_heading": "Connecting securely to SePay...",
+        "redirect_message": "Booking :code is being sent to the payment gateway. Please do not close this browser window.",
+        "payment_failed": "Payment failed. Please try again later.",
+        "payment_cancelled": "You cancelled the payment process.",
+        "booking_cancelled": "Your ticket was cancelled because the payment window expired.",
+        "booking_not_confirmed": "Your ticket is not ready for payment yet.",
+        "invalid_payment_method": "This booking payment method does not support SePay payment."
+      },
+      "success": {
+        "meta_title": "Booking Successful",
+        "meta_description": "Your booking confirmation at King Express Bus.",
+        "title": "Booking Successful!",
+        "thank_you_message": "Thank you for choosing King Express Bus. Your ticket information has been sent to <strong>:email</strong>. The operator will contact you soon to confirm.",
+        "your_email": "your email",
+        "booking_code_label": "Your booking code",
+        "passenger_info_title": "Passenger Information",
+        "passenger_name": "Full Name",
+        "passenger_phone": "Phone Number",
+        "passenger_email": "Email",
+        "trip_info_title": "Trip Information",
+        "route": "Route",
+        "company": "Operator",
+        "departure_date": "Departure Date",
+        "departure_time": "Departure Time",
+        "quantity": "Quantity",
+        "payment_status": "Payment Status",
+        "paid": "Paid",
+        "unpaid": "Unpaid",
+        "pickup_point": "Pickup Point",
+        "dropoff_point": "Drop-off Point",
+        "address_updating": "Address will be updated",
+        "arrival_time": "Arrival Time",
+        "bus": "Bus",
+        "bus_name_fallback": "Operator coach",
+        "tickets": "tickets",
+        "locations_title": "Pickup & Drop-off",
+        "next_steps_title": "Next Steps",
+        "step_1": "Check your confirmation email for the ticket code and detailed payment instructions (if any).",
+        "step_2": "Be at the pickup point 15 minutes before departure to ensure you don't miss the trip.",
+        "step_3": "Contact the operator's hotline <strong class=\"text-gray-800\">:hotline</strong> if you need assistance with your trip.",
+        "next_step_1_title": "Check confirmation email",
+        "next_step_1_desc": "Your ticket code and detailed payment instructions have been sent to your email.",
+        "next_step_1_online_title": "Wait for seat confirmation",
+        "next_step_1_online_desc": "Your booking request is being processed. The operator will check seat availability before requesting payment.",
+        "next_step_2_title": "Arrive at pickup point on time",
+        "next_step_2_desc": "Be at the pickup point 15 minutes before departure to ensure you don't miss the trip.",
+        "next_step_2_online_title": "Pay after receiving the email",
+        "next_step_2_online_desc": "If seats are available, we will send a payment request email with a SePay QR payment button.",
+        "next_step_3_title": "Contact support if needed",
+        "next_step_3_desc": "Call hotline <strong class=\"text-gray-800\">:hotline</strong> if you need assistance with your trip.",
+        "payment_info_title": "Payment Information",
+        "total_price": "Total Price",
+        "payment_method": "Method",
+        "payment_method_online": "Bank Transfer",
+        "payment_method_cash": "Pay at Bus Operator Office",
+        "online_payment_note": "Your request is being processed. We will send a payment request email after confirming seat availability.",
+        "online_payment_pending_message": "Your request is being processed. We will send a payment request email after confirming seat availability.",
+        "online_payment_verifying_note": "Your payment was returned to the system. This page will update automatically after SePay confirms the transaction.",
+        "online_payment_verifying_message": "SePay is confirming your payment. Please keep this page open for a moment.",
+        "online_payment_success_message": "Thank you, your order has been paid online successfully. Your e-ticket has been sent to your email.",
+        "support_title": "Need General Support?",
+        "support_description": "The King Express Bus customer care team is always ready to help you 24/7.",
+        "call_button": "Call Hotline",
+        "contact_link": "Contact Customer Service",
+        "other_routes_title": "Other Routes You Might Like"
+      },
+      "price_changed": {
+        "title": "Price has changed",
+        "description": "The fare was updated because a surcharge applies to this date. Please review the new price below.",
+        "confirm_new_price": "Confirm booking at the new price"
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact King Express Bus",
+        "description": "Customer service information, hotline, and office system of King Express Bus."
+      },
+      "hero": {
+        "badge": "24/7 SUPPORT",
+        "title": "Contact Us",
+        "subtitle": "Our customer service team is available 24/7. Please contact us when you need assistance.",
+        "zalo_cta": "Zalo chat",
+        "search_submit": "Find routes",
+        "stats": {
+          "routes": "Active routes",
+          "fleet": "Fleet size",
+          "trips": "Active trips"
+        }
+      },
+      "headings": {
+        "support_channels": "Support Channels",
+        "working_hours": "Working Hours",
+        "offices": "Office Locations",
+        "faq": "Frequently Asked Questions",
+        "map": "Location on Map"
+      },
+      "support_desc": "Choose the contact channel that suits you. We will respond as soon as possible.",
+      "channels": {
+        "hotline": "Booking Hotline",
+        "care": "Customer Care Center",
+        "email": "Support Email",
+        "messenger": "Messenger",
+        "facebook": "Facebook Fanpage",
+        "zalo": "Zalo Chat",
+        "whatsapp": "WhatsApp"
+      },
+      "support_title": "Connect quickly with our support team",
+      "working_hours_title": "Customer support hours",
+      "offices_title": "Featured office list",
+      "office_fallback_name": "Office",
+      "faq_badge": "FAQ",
+      "map_updating": "Map is being updated.",
+      "hours": {
+        "weekday_label": "Monday - Friday",
+        "weekend_label": "Saturday - Sunday",
+        "note": "Call center operates on holidays. Average response time: 5 minutes."
+      },
+      "faq_items": [
+        {
+          "question": "How can I check my booking status?",
+          "answer": "Log in to your King Express Bus account, go to Account > My Bookings to see ticket details and status. You can also check via the confirmation email sent to you."
+        },
+        {
+          "question": "What are the support hours for the call center?",
+          "answer": "The call center supports customers from 07:00 to 22:00 every day, including weekends and holidays. Outside working hours, you can message us via Zalo or Facebook."
+        },
+        {
+          "question": "Can I change or cancel my booking?",
+          "answer": "You can contact the call center 12 hours before departure to get advice on changing your schedule or canceling your ticket. Cancellation fees may apply depending on timing."
+        },
+        {
+          "question": "What payment methods are supported?",
+          "answer": "We support bank transfer, e-wallets (MoMo, ZaloPay, VNPay), and direct payment at the bus operator office."
+        }
+      ],
+      "no_offices": "No office information available.",
+      "map_desc": "Find directions to our main office",
+      "cta": {
+        "badge": "Support team",
+        "title": "Need More Help?",
+        "subtitle": "Book now or call our hotline for free consultation.",
+        "book_button": "Book Now",
+        "call_button": "Call Hotline"
+      },
+      "faq": {
+        "q1": "How can I check my booking status?",
+        "a1": "Log in to your King Express Bus account, go to Account > My Bookings to see ticket details and status.",
+        "q2": "What are the support hours for the call center?",
+        "a2": "The call center supports customers from 07:00 to 22:00 every day, including weekends and holidays.",
+        "q3": "Can I change my departure schedule?",
+        "a3": "You can contact the call center 12 hours before departure to get advice on changing your schedule or canceling your ticket according to regulations."
+      }
+    },
+    "menu": {
+      "home": "Home",
+      "about": "About Us",
+      "routes": "Routes",
+      "hot_routes": "Popular routes",
+      "contact": "Contact"
+    },
+    "about": {
+      "meta": {
+        "title": "About King Express Bus",
+        "description": "Learn about the mission, core values, and commitment of King Express Bus to providing a safe, high-quality travel experience."
+      },
+      "hero": {
+        "title": "King Express Bus",
+        "subtitle": "7 Years of Building High-Quality Transport Services",
+        "tagline": "SAFE • PROFESSIONAL • HIGH QUALITY",
+        "image_alt": "Interior of a King Express Bus cabin"
+      },
+      "typing": {
+        "1": "Safe journey, high-quality experience",
+        "2": "Your companion on every road",
+        "3": "7 years of setting transportation standards",
+        "4": "Elevating experience on every mile"
+      },
+      "position": {
+        "title": "Position & Milestones",
+        "badge": "7 YEARS JOURNEY",
+        "paragraph1": "With over 7 years of establishment and development, King Express Bus has built its position as a high-quality passenger transport operator trusted by many customers.",
+        "paragraph2": "From the first trips conquering the Hanoi ⇄ Sapa mountain pass route, King Express Bus has now left its mark on Vietnam's tourism map, expanding connections to famous destinations like Ninh Binh, Hue, and Da Nang.",
+        "paragraph3": "We not only provide transportation services but also deliver comprehensive mobility solutions where customers are at the center of every experience."
+      },
+      "fleet": {
+        "title": "High-Quality Fleet System",
+        "badge": "LIMOUSINE & VIP CABIN",
+        "description": "Understanding that comfort is a key factor, King Express Bus continuously invests in and upgrades its fleet. We operate modern Limousine Cabin and sleeper buses for different long-distance travel needs.",
+        "highlight": "With private space, comfortable interiors, and essential amenities, passengers can rest more easily throughout the journey.",
+        "features": [
+          "Private cabin, spacious room",
+          "Massage seats, individual AC",
+          "Entertainment TV, USB charging",
+          "Premium blankets, free drinks"
+        ]
+      },
+      "vision": {
+        "title": "Vision",
+        "badge": "HIGH-QUALITY SERVICE",
+        "description": "King Express Bus aims to develop as a high-quality tourism transport brand in Vietnam, focusing on safety, professionalism, and reliable service on every journey."
+      },
+      "mission": {
+        "title": "Mission",
+        "with_customers": {
+          "title": "With Customers",
+          "content": "Creating happy journeys. We commit to \"Elevating experience on every mile\" with absolute safety and heartfelt service attitude."
+        },
+        "with_society": {
+          "title": "With Society",
+          "content": "Contributing to national tourism development by connecting scenic spots with high-quality, safe, and friendly transportation services."
+        }
+      },
+      "core_values": {
+        "title": "Core Values",
+        "badge": "QUALITY PERSONNEL",
+        "description": "The strength of King Express Bus lies in our people. Our drivers are rigorously selected, skilled in handling situations, and always adhere to the principle \"Safety is life\". Additionally, our enthusiastic consultants are ready to assist passengers 24/7.",
+        "items": [
+          {
+            "icon": "fa-solid fa-shield-halved",
+            "title": "Safety First",
+            "description": "Putting passenger safety first on every journey."
+          },
+          {
+            "icon": "fa-solid fa-gem",
+            "title": "Consistent Quality",
+            "description": "Continuously improving service standards and investing in modern fleet."
+          },
+          {
+            "icon": "fa-solid fa-heart",
+            "title": "Wholehearted Service",
+            "description": "Putting customers at the center, serving with all our heart."
+          },
+          {
+            "icon": "fa-solid fa-bolt",
+            "title": "Continuous Innovation",
+            "description": "Applying technology to make booking and travel more convenient."
+          }
+        ]
+      },
+      "stats": {
+        "routes": "Routes",
+        "buses": "Quality Buses",
+        "partners": "Partner Operators",
+        "customers": "Customers Served",
+        "bookings": "Bookings Made",
+        "years": "Years of Experience",
+        "satisfaction": "Customer Satisfaction"
+      },
+      "why_choose": {
+        "title": "Why Choose Us?",
+        "subtitle": "King Express Bus is committed to providing the safest, most comfortable, and premium travel experience.",
+        "items": [
+          {
+            "icon": "fa-solid fa-star",
+            "title": "5-Star Service",
+            "description": "VIP cabin and limousine fleet with modern amenities."
+          },
+          {
+            "icon": "fa-solid fa-shield-halved",
+            "title": "Safety First",
+            "description": "Professional, experienced drivers. Strict vehicle inspections before each trip."
+          },
+          {
+            "icon": "fa-solid fa-headset",
+            "title": "24/7 Support",
+            "description": "Customer service operates 24/7, ready to answer questions and assist booking."
+          }
+        ]
+      },
+      "gallery": {
+        "title": "Real Images",
+        "subtitle": "Explore our premium fleet and passenger experiences"
+      },
+      "cta": {
+        "title": "Ready for Your Next Journey?",
+        "subtitle": "Let King Express Bus accompany you, turning every trip into a beautiful and complete memory!",
+        "button": "Book Now",
+        "routes_button": "View All Routes"
+      },
+      "title": "Why Choose Us?",
+      "subtitle": "About King Express Bus",
+      "description": "King Express Bus is committed to providing the safest, most comfortable, and premium travel experience for our customers.",
+      "years_experience": "Years of experience",
+      "feature_1_title": "5-Star Service",
+      "feature_1_desc": "Experience a smooth journey with modern Limousine and Cabin buses.",
+      "feature_2_title": "Safety First",
+      "feature_2_desc": "Experienced drivers, regularly maintained vehicles.",
+      "feature_3_title": "24/7 Support",
+      "feature_3_desc": "Customer service operates 24/7.",
+      "badge_subtitle": "Satisfied",
+      "image_alt": "Interior of a King Express Bus cabin",
+      "intro": {
+        "title": "Our Mission",
+        "paragraph1": "King Express Bus was founded to redefine long-distance travel in Vietnam.",
+        "paragraph2": "By combining modern fleet and smart online booking platform."
+      },
+      "strengths": {
+        "title": "What Makes Us Different?",
+        "subtitle": "We are proud to deliver outstanding value.",
+        "items": [
+          {
+            "icon": "fa-solid fa-bus-simple",
+            "title": "Modern & Diverse Fleet",
+            "description": "Premium Limousine, Cabin and Sleeper buses."
+          },
+          {
+            "icon": "fa-solid fa-wifi",
+            "title": "Superior Amenities",
+            "description": "High-speed Wi-Fi, USB ports, TV, blankets and free drinks."
+          },
+          {
+            "icon": "fa-solid fa-laptop-code",
+            "title": "Smart Booking Platform",
+            "description": "Search, compare and book tickets in minutes."
+          },
+          {
+            "icon": "fa-solid fa-user-shield",
+            "title": "Professional Driver Team",
+            "description": "Experienced, well-trained drivers."
+          },
+          {
+            "icon": "fa-solid fa-headset",
+            "title": "24/7 Dedicated Support",
+            "description": "Always ready to answer questions."
+          },
+          {
+            "icon": "fa-solid fa-handshake",
+            "title": "Extensive Partner Network",
+            "description": "Collaborate with reputable operators nationwide."
+          }
+        ]
+      }
+    },
+    "auth": {
+      "common": {
+        "or": "Or",
+        "back_to_login": "Back to login"
+      },
+      "validation": {
+        "login_required": "Please enter your email or phone number.",
+        "name_required": "Please enter your full name.",
+        "email_required": "Please enter your email address.",
+        "email_invalid": "Invalid email format.",
+        "email_unique": "This email has already been registered.",
+        "phone_unique": "This phone number has already been registered.",
+        "password_required": "Please enter your password.",
+        "password_min_login": "Password must be at least 6 characters.",
+        "password_min_register": "Password must be at least 8 characters.",
+        "password_confirmed": "Password confirmation does not match."
+      },
+      "flash": {
+        "login_success": "Login successful.",
+        "login_invalid": "Invalid login credentials.",
+        "register_success": "Registration successful.",
+        "logout_success": "You have logged out."
+      },
+      "password": {
+        "reset_link_sent": "We have sent a password reset link to your email.",
+        "email_not_found": "No account found with this email.",
+        "reset_success": "Password reset successful. Please log in again.",
+        "reset_invalid_link": "The password reset link is invalid or expired."
+      },
+      "login": {
+        "meta_title": "Login - King Express Bus",
+        "meta_description": "Log in to manage your trips, book tickets faster, and manage your account.",
+        "badge": "Member benefits",
+        "welcome_title": "Welcome back",
+        "welcome_brand": "King Express Bus",
+        "welcome_description": "Log in to manage tickets, review your trips, and receive exclusive offers.",
+        "feature_manage_title": "Manage your trips",
+        "feature_manage_desc": "Track your booking history and payment status in real time.",
+        "form_title": "Log in",
+        "form_subtitle": "Enter your account information to continue",
+        "login_label": "Email or Phone Number",
+        "login_hint": "Use your registered email or phone number.",
+        "password_label": "Password",
+        "password_hint": "Do not share your password with others.",
+        "remember": "Remember me",
+        "forgot_password_title": "Forgot password?",
+        "forgot_password_desc": "Receive a reset link via email in a few minutes.",
+        "forgot_password_link": "Send reset link",
+        "submit": "Log in",
+        "submitting": "Signing in…",
+        "no_account": "Do not have an account?",
+        "register_now": "Sign up now"
+      },
+      "register": {
+        "meta_title": "Create account",
+        "meta_description": "Create a King Express Bus account for a better travel experience.",
+        "badge": "Member registration",
+        "welcome_title": "Start your journey",
+        "welcome_brand": "with King Express",
+        "welcome_description": "Create your account today to earn points, redeem tickets, and unlock exclusive deals.",
+        "feature_points_title": "Earn & redeem points",
+        "feature_points_desc": "Every trip gives reward points that you can redeem for free tickets.",
+        "feature_offers_title": "Exclusive offers",
+        "feature_offers_desc": "Get early updates on promotions and deep discounts.",
+        "form_title": "Create account",
+        "form_subtitle": "Fill in your details to become a member",
+        "name_label": "Full Name",
+        "email_hint": "Confirmation links and booking updates will be sent here.",
+        "phone_label": "Phone Number",
+        "phone_hint": "Optional, helps receive updates faster.",
+        "password_label": "Password",
+        "password_hint": "At least 8 characters.",
+        "password_confirmation_label": "Confirm",
+        "submit": "Create account",
+        "has_account": "Already a member?",
+        "login_now": "Log in now",
+        "email_label": "Email"
+      },
+      "forgot_password": {
+        "meta_title": "Forgot password",
+        "meta_description": "Enter your email to receive a password reset link.",
+        "title": "Forgot password",
+        "subtitle": "We will send a reset link to your email.",
+        "submit": "Send reset link",
+        "email_label": "Email"
+      },
+      "reset_password": {
+        "meta_title": "Reset password",
+        "meta_description": "Create a new password for your King Express Bus account.",
+        "title": "Reset password",
+        "subtitle": "Enter your new password to continue.",
+        "password_label": "New password",
+        "password_confirmation_label": "Confirm password",
+        "submit": "Update password",
+        "email_label": "Email"
+      }
+    },
+    "profile_page": {
+      "meta": {
+        "title": "My Account",
+        "description": "Manage your personal information and booking history at King Express Bus."
+      },
+      "default_user_name": "Customer",
+      "hero": {
+        "badge": "Loyal member",
+        "greeting": "Hello, {name}"
+      },
+      "stats": {
+        "total_tickets": "Tickets",
+        "total_tickets_desc": "Successfully booked",
+        "upcoming": "Upcoming",
+        "upcoming_desc": "Trips departing soon",
+        "completed": "Completed",
+        "completed_desc": "Trips completed safely",
+        "spending": "Spending",
+        "spending_desc": "Total ticket spending"
+      },
+      "tabs": {
+        "upcoming": "Upcoming",
+        "history": "Booking history"
+      },
+      "empty_upcoming": {
+        "title": "No upcoming trips yet",
+        "description": "Plan your next journey today.",
+        "cta": "Find routes"
+      },
+      "empty_history": {
+        "title": "No history yet",
+        "description": "You have not completed any trips with King Express Bus yet."
+      },
+      "loading": "Loading your account…",
+      "load_error": {
+        "title": "Could not load your account",
+        "description": "Please try again or sign in again to continue.",
+        "retry": "Try again"
+      },
+      "preferred_routes": {
+        "title": "Favorite routes"
+      },
+      "support": {
+        "title": "Need support?",
+        "item_1": "Easy schedule changes",
+        "item_2": "Online ticket cancellation support",
+        "item_3": "24/7 call center consultation",
+        "cta": "Contact now"
+      }
+    },
+    "booking_card": {
+      "departure": "Departure",
+      "pickup": "Pickup point",
+      "dropoff": "Drop-off point",
+      "total_payment": "Total payment",
+      "actions": {
+        "details": "Details",
+        "rebook": "Book again"
+      }
+    },
+    "page_view": {
+      "hero": {
+        "badge": "King Express Bus journey information",
+        "fallback_title": "Useful content for your trip",
+        "description": "Quickly find routes, stay updated, and prepare your trip with a modern booking experience.",
+        "updated_at": "Updated: {datetime}",
+        "trust_note": "Transparent and easy-to-follow information",
+        "search_submit": "Find trips now"
+      },
+      "content": {
+        "label": "Detailed content",
+        "fallback_title": "Detailed information",
+        "cta_book_now": "Book now"
+      },
+      "support": {
+        "title": "24/7 booking support",
+        "description": "Need help with pickup points, drop-off points, or schedule changes? Our team is always ready to help.",
+        "cta": "Contact support"
+      },
+      "destinations": {
+        "title": "Featured destinations",
+        "sapa": {
+          "name": "Sa Pa",
+          "desc": "Cool weather all year round"
+        },
+        "hanoi": {
+          "name": "Hanoi",
+          "desc": "Rich cuisine and culture"
+        },
+        "ninh_binh": {
+          "name": "Ninh Binh",
+          "desc": "Magnificent nature and relaxation"
+        }
+      },
+      "popular_pages": {
+        "title": "Popular pages",
+        "about": "About",
+        "policy": "Support policy",
+        "home": "Home"
+      }
+    },
+    "home_page": {
+      "hero": {
+        "badge": "Fast ticket booking for Gen Z",
+        "title_line_1": "Book bus tickets super fast,",
+        "title_line_2": "get on your trip right away",
+        "description": "King Express Bus delivers a smooth and intuitive booking experience with clear schedules and transparent prices from the first step.",
+        "search_submit": "Find trips",
+        "stats": {
+          "routes": "Active routes",
+          "trips": "Active trips",
+          "bookings": "Successful bookings"
+        }
+      },
+      "popular_routes": {
+        "label": "Popular routes",
+        "title": "Featured routes this week",
+        "view_all": "View all",
+        "trips_per_day": ":count trips/day",
+        "price_from": "From",
+        "empty": "No featured routes available yet."
+      },
+      "destinations": {
+        "label": "Destinations",
+        "title": "Inspiring destinations",
+        "description": "Every trip is a journey through culture, cuisine, and nature in a youthful and flexible way.",
+        "view_all": "Explore all routes",
+        "cities": {
+          "hanoi": "Hanoi",
+          "sapa": "Sa Pa",
+          "ninh_binh": "Ninh Binh",
+          "da_nang": "Da Nang",
+          "hoi_an": "Hoi An",
+          "hue": "Hue",
+          "cat_ba": "Cat Ba",
+          "phong_nha": "Phong Nha",
+          "ha_giang": "Ha Giang"
+        },
+        "tags": {
+          "hanoi": "Street food & old quarter",
+          "sapa": "Terraced fields & mountain mist",
+          "ninh_binh": "Trang An & Tam Coc",
+          "da_nang": "Beaches & Golden Bridge",
+          "hoi_an": "Ancient town & lanterns",
+          "hue": "Imperial city & royal cuisine",
+          "cat_ba": "Bay & limestone islands",
+          "phong_nha": "Spectacular cave systems",
+          "ha_giang": "Ha Giang Loop & buckwheat blooms"
+        }
+      },
+      "advantages": {
+        "label": "Travel confidence",
+        "title": "Why young travelers choose King Express",
+        "item_1_title": "Book in 60 seconds",
+        "item_1_desc": "Short and simple flow with no confusion.",
+        "item_2_title": "Transparent pricing, no hidden fees",
+        "item_2_desc": "Compare prices quickly and check schedules directly on cards.",
+        "item_3_title": "24/7 realtime support",
+        "item_3_desc": "Fast response through hotline and chat channels."
+      },
+      "fleet": {
+        "label": "Fleet",
+        "title": "Featured vehicle lines",
+        "seats": "seats"
+      },
+      "social_proof": {
+        "label": "Social proof",
+        "title": "\"Smooth booking, clear interface, super fast actions.\"",
+        "description": "Over 10,000+ passengers rate the King Express Bus booking experience as fast, transparent, and mobile-friendly.",
+        "review_1_quote": "\"Clean bus, quick support, and I still caught my trip even when booking late.\"",
+        "review_1_author": "Ngoc Anh · Hanoi - Sa Pa route",
+        "review_2_quote": "\"The route search form is easy to use, and the location dropdown is very convenient.\"",
+        "review_2_author": "Minh Khoi · Hue - Hoi An route"
+      },
+      "cta": {
+        "label": "Ready to go",
+        "title": "Plan your next journey today",
+        "description": "Choose great seats, pick the right time, and complete booking in just a few steps.",
+        "primary_button": "Find trips now",
+        "secondary_button": "Need consultation"
+      }
+    },
+    "about_page": {
+      "fleet_cards": {
+        "cabin": {
+          "name": "VIP Cabin",
+          "meta": "Private, smooth, premium"
+        },
+        "limousine": {
+          "name": "Limousine",
+          "meta": "Spacious seats, next-gen comfort"
+        },
+        "sleeper": {
+          "name": "Sleeper",
+          "meta": "Ideal for long overnight journeys"
+        }
+      },
+      "hero": {
+        "primary_button": "Book now",
+        "secondary_button": "Learn more",
+        "review_label": "What customers say",
+        "review_quote": "\"Super fast booking, easy interface, and smooth on mobile.\"",
+        "review_author": "Minh Anh · Hanoi - Sa Pa route",
+        "rating_label": "Average rating",
+        "return_rate_label": "Return rate",
+        "search_submit": "Find trips now"
+      },
+      "position": {
+        "label": "Brand position"
+      },
+      "tabs": {
+        "aria_label": "Brand values"
+      },
+      "popular_routes": {
+        "label": "Popular routes",
+        "title": "Featured routes from King Express",
+        "view_all": "View all routes",
+        "trip_count": "{count} trips",
+        "price_from": "From",
+        "empty": "No featured routes available yet."
+      },
+      "fleet": {
+        "label": "Premium fleet"
+      },
+      "core_values": {
+        "label": "Core values"
+      },
+      "destinations": {
+        "label": "Destinations",
+        "title": "Inspiring destinations",
+        "description": "Every trip is a journey through culture, cuisine, and nature in a youthful and flexible way.",
+        "cities": {
+          "sapa": "Sa Pa",
+          "hanoi": "Hanoi",
+          "ninh_binh": "Ninh Binh",
+          "da_nang": "Da Nang",
+          "hoi_an": "Hoi An"
+        }
+      },
+      "cta": {
+        "label": "Ready to ride",
+        "title": "Ready for your next journey with King Express Bus?",
+        "description": "Optimized route search, seat selection, and booking confirmation in one intuitive flow.",
+        "primary_button": "Find trips now",
+        "secondary_button": "Contact support"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# Frontend — local Docker Desktop
+# Usage (from this directory):
+#   docker compose -f docker-compose.local.yml up -d --build
+# Requires backend already published on host :8000
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      # Host :3000 often occupied
+      - "3001:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      # Separate BE container — reach host-published API
+      API_INTERNAL_URL: http://host.docker.internal:8000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

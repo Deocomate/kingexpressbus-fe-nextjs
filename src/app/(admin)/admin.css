@@ -1,0 +1,86 @@
+/*
+ * AdminLTE-inspired tokens. Must be imported from globals.css (after
+ * @import "tailwindcss") so Tailwind v4 registers the utilities.
+ */
+
+@theme inline {
+  --color-admin-bg: #f0f2f5;
+  --color-admin-surface: #ffffff;
+  --color-admin-surface-hover: #f4f4f5;
+  --color-admin-border: #dee2e6;
+  --color-admin-border-strong: #ced4da;
+  --color-admin-ink: #212529;
+  --color-admin-muted: #6c757d;
+  --color-admin-muted-fg: #adb5bd;
+
+  --color-admin-primary: #3b82f6;
+  --color-admin-primary-fg: #ffffff;
+  --color-admin-primary-hover: #2563eb;
+  --color-admin-primary-soft: #eff6ff;
+
+  --color-admin-accent: #3b82f6;
+  --color-admin-accent-fg: #ffffff;
+  --color-admin-accent-hover: #2563eb;
+  --color-admin-accent-soft: #eff6ff;
+
+  --color-admin-sidebar: #1e282c;
+  --color-admin-sidebar-hover: #2c3b41;
+  --color-admin-sidebar-text: #b8c7ce;
+  --color-admin-sidebar-active: #3b82f6;
+
+  --color-admin-danger: #dc3545;
+  --color-admin-danger-soft: #f8d7da;
+  --color-admin-success: #28a745;
+  --color-admin-success-soft: #d4edda;
+  --color-admin-warn: #ffc107;
+  --color-admin-warn-soft: #fff3cd;
+  --color-admin-info: #17a2b8;
+  --color-admin-info-soft: #d1ecf1;
+
+  --color-admin-ring: #93c5fd;
+
+  --radius-admin-sm: 0.25rem;
+  --radius-admin-md: 0.375rem;
+  --radius-admin-lg: 0.5rem;
+}
+
+/* Runtime CSS vars for non-utility consumers (charts, focus, etc.) */
+.admin-shell {
+  --color-admin-bg: #f0f2f5;
+  --color-admin-surface: #ffffff;
+  --color-admin-surface-hover: #f4f4f5;
+  --color-admin-border: #dee2e6;
+  --color-admin-border-strong: #ced4da;
+  --color-admin-ink: #212529;
+  --color-admin-muted: #6c757d;
+  --color-admin-primary: #3b82f6;
+  --color-admin-primary-hover: #2563eb;
+  --color-admin-primary-soft: #eff6ff;
+  --color-admin-accent: #3b82f6;
+  --color-admin-sidebar: #1e282c;
+  --color-admin-sidebar-hover: #2c3b41;
+  --color-admin-sidebar-text: #b8c7ce;
+  --color-admin-sidebar-active: #3b82f6;
+  --color-admin-danger: #dc3545;
+  --color-admin-success: #28a745;
+  --color-admin-warn: #ffc107;
+  --color-admin-info: #17a2b8;
+  --color-admin-ring: #93c5fd;
+
+  background: var(--color-admin-bg);
+  color: var(--color-admin-ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.admin-shell :focus-visible {
+  outline: 2px solid var(--color-admin-primary);
+  outline-offset: 2px;
+}
+
+.admin-shell ::selection {
+  background: var(--color-admin-primary-soft);
+  color: var(--color-admin-ink);
+}

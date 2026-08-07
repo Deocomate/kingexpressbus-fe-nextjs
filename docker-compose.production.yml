@@ -1,0 +1,17 @@
+# Frontend — Coolify / production
+# Domain: https://kingexpressbus.com
+# Usage: point Coolify at this file (compose root = this repo folder).
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: https://api.kingexpressbus.com
+    expose:
+      - "3000"
+    environment:
+      NEXT_PUBLIC_API_URL: https://api.kingexpressbus.com
+      # Separate BE app — public API URL (or Coolify internal URL if linked)
+      API_INTERNAL_URL: https://api.kingexpressbus.com
+    restart: unless-stopped
