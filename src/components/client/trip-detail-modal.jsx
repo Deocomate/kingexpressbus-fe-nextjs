@@ -52,7 +52,7 @@ export function TripDetailModal({ trip, date, locale, primaryImage, hasSeats }) 
           ) : null}
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h4 className="mb-2 text-sm font-semibold">{t("pickup_title")}</h4>
+              <h4 className="mb-2 text-sm font-semibold">{t("filters.pickup_title")}</h4>
               <div className="space-y-1">
                 {pickupPoints.length ? (
                   pickupPoints.map((point) => (
@@ -66,7 +66,7 @@ export function TripDetailModal({ trip, date, locale, primaryImage, hasSeats }) 
               </div>
             </div>
             <div>
-              <h4 className="mb-2 text-sm font-semibold">{t("dropoff_title")}</h4>
+              <h4 className="mb-2 text-sm font-semibold">{t("filters.dropoff_title")}</h4>
               <div className="space-y-1">
                 {dropoffPoints.length ? (
                   dropoffPoints.map((point) => (
