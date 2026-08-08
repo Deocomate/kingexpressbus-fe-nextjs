@@ -11,6 +11,7 @@ import {
   PaymentStatusBadge,
 } from "@/components/client/payment-status-poller";
 import { BookingSuccessAccountCta } from "@/components/client/booking-success-account-cta";
+import { buildPageMetadata } from "@/lib/seo";
 
 function formatMoney(amount, locale) {
   return `${amount.toLocaleString(locale === "vi" ? "vi-VN" : "en-US")}đ`;
@@ -22,6 +23,21 @@ function formatDate(iso) {
 function findStop(stops, id) {
   if (id == null) return null;
   return stops.find((s) => s.stop_id === id) ?? null;
+}
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "client.booking.success",
+  });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.booking,
+    noIndex: true,
+  });
 }
 
 export default async function BookingSuccessPage({ params, searchParams }) {

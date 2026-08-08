@@ -2,11 +2,29 @@ import Link from "next/link";
 import { ArrowRight, Bus, Clock, Headset, Ticket } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listProvinces, listRoutes } from "@/services/booking-api";
+import { getWebProfile } from "@/services/client-api";
 import { SearchBar } from "@/components/client/search-bar";
 import { DestinationMosaic } from "@/components/client/destination-mosaic";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
+import { buildPageMetadata } from "@/lib/seo";
+
 const POPULAR_ROUTES_LIMIT = 8;
 const FALLBACK_THUMBNAIL = "/assets/client/images/city_imgs/ha-noi.jpg";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const [t, webProfile] = await Promise.all([
+    getTranslations({ locale, namespace: "client.home" }),
+    getWebProfile().catch(() => ({})),
+  ]);
+  return buildPageMetadata({
+    title: t("meta_title") || t("meta.title_default"),
+    description: webProfile.description || t("meta.description_default"),
+    locale,
+    path: CLIENT_ROUTES.home,
+    images: webProfile.logo_url || undefined,
+  });
+}
 function formatMoney(amount, locale) {
   return `${amount.toLocaleString(locale === "vi" ? "vi-VN" : "en-US")}đ`;
 }

@@ -4,6 +4,22 @@ import { ApiError } from "@/services/api-base";
 import { getHotelBooking } from "@/services/hotel-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatIsoDate, formatMoney } from "@/utils/client-format";
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "client.hotels.success",
+  });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.hotelBooking,
+    noIndex: true,
+  });
+}
 
 export default async function HotelBookingSuccessPage({ params }) {
   const { locale, bookingId } = await params;

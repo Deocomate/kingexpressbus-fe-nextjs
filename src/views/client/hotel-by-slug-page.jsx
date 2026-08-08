@@ -5,6 +5,35 @@ import { ApiError } from "@/services/api-base";
 import { getHotelBySlug } from "@/services/hotel-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatMoney, normalizeImageList } from "@/utils/client-format";
+import {
+  JsonLd,
+  buildBreadcrumbJsonLd,
+  buildHotelJsonLd,
+  buildPageMetadata,
+} from "@/lib/seo";
+
+export async function generateMetadata({ params }) {
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "client.hotels" });
+  let hotel;
+  try {
+    hotel = await getHotelBySlug(slug);
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) {
+      return { title: t("index.meta_title") };
+    }
+    throw err;
+  }
+  return buildPageMetadata({
+    title: t("detail.meta_title", { name: hotel.name }),
+    description:
+      hotel.short_description ||
+      t("detail.meta_description_fallback", { name: hotel.name }),
+    locale,
+    path: `${CLIENT_ROUTES.hotels}/${slug}`,
+    images: hotel.thumbnail_url || undefined,
+  });
+}
 
 export default async function HotelDetailPage({ params, searchParams }) {
   const { locale, slug } = await params;
@@ -31,6 +60,20 @@ export default async function HotelDetailPage({ params, searchParams }) {
 
   return (
     <main className="bg-page text-ink">
+      <JsonLd
+        data={[
+          buildHotelJsonLd(hotel, locale, `${CLIENT_ROUTES.hotels}/${slug}`),
+          buildBreadcrumbJsonLd({
+            name: hotel.name,
+            locale,
+            items: [
+              { name: "Home", path: CLIENT_ROUTES.home },
+              { name: "Hotels", path: CLIENT_ROUTES.hotels },
+              { name: hotel.name, path: `${CLIENT_ROUTES.hotels}/${slug}` },
+            ],
+          }),
+        ]}
+      />
       <section className="relative min-h-[52vh] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

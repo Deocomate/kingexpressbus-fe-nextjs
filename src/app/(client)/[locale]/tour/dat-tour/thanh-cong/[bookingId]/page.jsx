@@ -1,1 +1,1 @@
-export { default } from "@/views/client/tour-booking-success-page";
+export { default, generateMetadata } from "@/views/client/tour-booking-success-page";

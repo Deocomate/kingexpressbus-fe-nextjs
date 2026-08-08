@@ -6,6 +6,8 @@ import { ContactHeroSection } from "@/components/client/contact/contact-hero-sec
 import { ContactSupportSection } from "@/components/client/contact/contact-support-section";
 import { ContactFaqMapSection } from "@/components/client/contact/contact-faq-map-section";
 import { ContactCtaSection } from "@/components/client/contact/contact-cta-section";
+import { buildPageMetadata } from "@/lib/seo";
+import { CLIENT_ROUTES } from "@/services/client-routes";
 
 // `bus_count`/`trip_count` stats have no public-API source (only
 // route_count is derivable from `/public/routes`) — see contact-hero-section
@@ -30,10 +32,12 @@ export async function generateMetadata({ params }) {
     locale,
     namespace: "client.contact",
   });
-  return {
+  return buildPageMetadata({
     title: t("meta.title"),
     description: t("meta.description"),
-  };
+    locale,
+    path: CLIENT_ROUTES.contact,
+  });
 }
 export default async function ContactPage({ params }) {
   const { locale } = await params;

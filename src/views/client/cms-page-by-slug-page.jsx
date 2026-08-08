@@ -6,6 +6,7 @@ import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { CmsPageStyles } from "@/components/client/cms-page/cms-page-styles";
 import { CmsPageHero } from "@/components/client/cms-page/cms-page-hero";
 import { CmsPageSidebar } from "@/components/client/cms-page/cms-page-sidebar";
+import { buildPageMetadata } from "@/lib/seo";
 
 /**
  * Resolves title/description for the two supported fallback slugs
@@ -38,10 +39,12 @@ export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
   const meta = await resolvePageMeta(locale, slug);
   if (!meta) return {};
-  return {
+  return buildPageMetadata({
     title: meta.title,
     description: meta.description,
-  };
+    locale,
+    path: `${CLIENT_ROUTES.page}/${slug}`,
+  });
 }
 export default async function CmsPage({ params }) {
   const { locale, slug } = await params;

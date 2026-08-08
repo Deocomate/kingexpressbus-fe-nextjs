@@ -1212,6 +1212,8 @@
     },
     "hotels": {
       "index": {
+        "meta_title": "Khách sạn Sa Pa - King Express Bus",
+        "meta_description": "Đặt phòng khách sạn Sa Pa cùng King Express Bus. Thanh toán tại chỗ, không cần thẻ.",
         "eyebrow": "SA PA",
         "title": "Khách sạn Sa Pa",
         "subtitle": "Đặt phòng Sapa Cosy Hotel và các chỗ nghỉ đối tác. Thanh toán tại chỗ, không cần thẻ.",
@@ -1219,6 +1221,8 @@
         "view_details": "Xem chi tiết"
       },
       "detail": {
+        "meta_title": "{name} - Khách sạn Sa Pa",
+        "meta_description_fallback": "Đặt phòng {name} cùng King Express Bus.",
         "eyebrow": "KHÁCH SẠN",
         "amenities": "Tiện nghi",
         "rooms": "Loại phòng",
@@ -1233,6 +1237,8 @@
         "cancel_policy": "Hủy phòng"
       },
       "booking": {
+        "meta_title": "Đặt phòng khách sạn",
+        "meta_description": "Gửi yêu cầu đặt phòng khách sạn Sa Pa với King Express Bus.",
         "eyebrow": "ĐẶT PHÒNG",
         "title": "Thông tin đặt phòng",
         "room": "Loại phòng",
@@ -1264,6 +1270,8 @@
         }
       },
       "success": {
+        "meta_title": "Đặt phòng thành công",
+        "meta_description": "Xác nhận yêu cầu đặt phòng của bạn.",
         "eyebrow": "THÀNH CÔNG",
         "title": "Đã nhận yêu cầu đặt phòng",
         "subtitle": "Chúng tôi sẽ xác nhận qua email trong thời gian sớm nhất.",
@@ -1278,6 +1286,8 @@
     },
     "tours": {
       "index": {
+        "meta_title": "Tour Sa Pa - King Express Bus",
+        "meta_description": "Đặt tour khám phá Sa Pa cùng King Express Bus.",
         "eyebrow": "SA PA",
         "title": "Tour Sa Pa",
         "subtitle": "Đặt tour khám phá Sa Pa. Nội dung mẫu có thể cập nhật trên trang quản trị.",
@@ -1285,6 +1295,8 @@
         "duration_tba": "Thời lượng cập nhật sau"
       },
       "detail": {
+        "meta_title": "{name} - Tour Sa Pa",
+        "meta_description_fallback": "Đặt tour {name} cùng King Express Bus.",
         "eyebrow": "TOUR",
         "book": "Đặt tour",
         "itinerary": "Lịch trình",
@@ -1293,6 +1305,8 @@
         "excludes": "Không bao gồm"
       },
       "booking": {
+        "meta_title": "Đặt tour Sa Pa",
+        "meta_description": "Gửi yêu cầu đặt tour Sa Pa với King Express Bus.",
         "eyebrow": "ĐẶT TOUR",
         "title": "Thông tin đặt tour",
         "date": "Ngày đi",
@@ -1314,6 +1328,8 @@
         }
       },
       "success": {
+        "meta_title": "Đặt tour thành công",
+        "meta_description": "Xác nhận yêu cầu đặt tour của bạn.",
         "eyebrow": "THÀNH CÔNG",
         "title": "Đã nhận yêu cầu đặt tour",
         "subtitle": "Chúng tôi sẽ xác nhận qua email sớm nhất.",

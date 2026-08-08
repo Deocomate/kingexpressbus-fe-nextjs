@@ -5,6 +5,18 @@ import { listProvinces, listRoutes } from "@/services/booking-api";
 import { SearchBar } from "@/components/client/search-bar";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatMoney, routeThumbnail } from "@/utils/client-format";
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "client.routes.index" });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.routesIndex,
+  });
+}
 
 function provinceName(provinces, id) {
   return provinces.find((p) => p.id === id)?.name ?? null;

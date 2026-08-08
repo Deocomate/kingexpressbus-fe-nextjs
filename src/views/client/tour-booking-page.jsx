@@ -3,6 +3,23 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ApiError } from "@/services/api-base";
 import { getTourBySlug, listTours } from "@/services/tour-api";
 import { TourBookingForm } from "@/components/client/tour-booking-form";
+import { buildPageMetadata } from "@/lib/seo";
+import { CLIENT_ROUTES } from "@/services/client-routes";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "client.tours.booking",
+  });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.tourBooking,
+    noIndex: true,
+  });
+}
 
 export default async function TourBookingPage({ params, searchParams }) {
   const { locale } = await params;

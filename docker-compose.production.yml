@@ -8,10 +8,12 @@ services:
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_API_URL: https://api.kingexpressbus.com
+        NEXT_PUBLIC_SITE_URL: https://kingexpressbus.com
     expose:
       - "3000"
     environment:
       NEXT_PUBLIC_API_URL: https://api.kingexpressbus.com
+      NEXT_PUBLIC_SITE_URL: https://kingexpressbus.com
       # Separate BE app — public API URL (or Coolify internal URL if linked)
       API_INTERNAL_URL: https://api.kingexpressbus.com
     restart: unless-stopped

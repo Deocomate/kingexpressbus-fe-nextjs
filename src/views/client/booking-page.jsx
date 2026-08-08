@@ -4,10 +4,27 @@ import { ApiError } from "@/services/api-base";
 import { getTripDetail } from "@/services/booking-api";
 import { getWebProfile } from "@/services/client-api";
 import { BookingForm } from "@/components/client/booking-form";
+import { buildPageMetadata } from "@/lib/seo";
+import { CLIENT_ROUTES } from "@/services/client-routes";
 
 function formatDate(iso) {
   const [y, m, d] = iso.split("-");
   return `${d}/${m}/${y}`;
+}
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "client.booking.create",
+  });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.booking,
+    noIndex: true,
+  });
 }
 
 export default async function BookingCreatePage({ params, searchParams }) {

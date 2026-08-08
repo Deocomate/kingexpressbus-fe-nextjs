@@ -1212,6 +1212,8 @@
     },
     "hotels": {
       "index": {
+        "meta_title": "Sa Pa Hotels - King Express Bus",
+        "meta_description": "Book Sa Pa hotels with King Express Bus. Pay at the property — no card required.",
         "eyebrow": "SA PA",
         "title": "Sa Pa Hotels",
         "subtitle": "Book Sapa Cosy Hotel and partner stays. Pay at property — no card required.",
@@ -1219,6 +1221,8 @@
         "view_details": "View details"
       },
       "detail": {
+        "meta_title": "{name} - Sa Pa Hotel",
+        "meta_description_fallback": "Book {name} with King Express Bus.",
         "eyebrow": "HOTEL",
         "amenities": "Amenities",
         "rooms": "Room types",
@@ -1233,6 +1237,8 @@
         "cancel_policy": "Cancellation"
       },
       "booking": {
+        "meta_title": "Book a hotel room",
+        "meta_description": "Submit a Sa Pa hotel booking request with King Express Bus.",
         "eyebrow": "BOOKING",
         "title": "Hotel booking details",
         "room": "Room type",
@@ -1264,6 +1270,8 @@
         }
       },
       "success": {
+        "meta_title": "Hotel booking received",
+        "meta_description": "Confirmation for your hotel booking request.",
         "eyebrow": "SUCCESS",
         "title": "Hotel booking request received",
         "subtitle": "We will confirm by email as soon as possible.",
@@ -1278,6 +1286,8 @@
     },
     "tours": {
       "index": {
+        "meta_title": "Sa Pa Tours - King Express Bus",
+        "meta_description": "Book Sa Pa tours with King Express Bus.",
         "eyebrow": "SA PA",
         "title": "Sa Pa Tours",
         "subtitle": "Book Sa Pa tours. Placeholder content can be updated in admin.",
@@ -1285,6 +1295,8 @@
         "duration_tba": "Duration TBA"
       },
       "detail": {
+        "meta_title": "{name} - Sa Pa Tour",
+        "meta_description_fallback": "Book the {name} tour with King Express Bus.",
         "eyebrow": "TOUR",
         "book": "Book tour",
         "itinerary": "Itinerary",
@@ -1293,6 +1305,8 @@
         "excludes": "Excludes"
       },
       "booking": {
+        "meta_title": "Book a Sa Pa tour",
+        "meta_description": "Submit a Sa Pa tour booking request with King Express Bus.",
         "eyebrow": "BOOKING",
         "title": "Tour booking details",
         "date": "Tour date",
@@ -1314,6 +1328,8 @@
         }
       },
       "success": {
+        "meta_title": "Tour booking received",
+        "meta_description": "Confirmation for your tour booking request.",
         "eyebrow": "SUCCESS",
         "title": "Tour booking request received",
         "subtitle": "We will confirm by email shortly.",

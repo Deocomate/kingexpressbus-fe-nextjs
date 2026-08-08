@@ -9,6 +9,8 @@ import { AboutFleetSection } from "@/components/client/about/about-fleet-section
 import { AboutPopularRoutesSection } from "@/components/client/about/about-popular-routes-section";
 import { AboutDestinationsSection } from "@/components/client/about/about-destinations-section";
 import { AboutCtaSection } from "@/components/client/about/about-cta-section";
+import { buildPageMetadata } from "@/lib/seo";
+import { CLIENT_ROUTES } from "@/services/client-routes";
 
 // `bus_count` fallback of 10 — see about-stat-bar-section.tsx doc comment.
 const FALLBACK_BUS_COUNT = 10;
@@ -19,10 +21,12 @@ export async function generateMetadata({ params }) {
     locale,
     namespace: "client.about",
   });
-  return {
+  return buildPageMetadata({
     title: t("meta.title"),
     description: t("meta.description"),
-  };
+    locale,
+    path: CLIENT_ROUTES.about,
+  });
 }
 export default async function AboutPage({ params }) {
   const { locale } = await params;

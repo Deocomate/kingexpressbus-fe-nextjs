@@ -18,6 +18,12 @@ import { RouteMobileFilterDrawer } from "@/components/client/route-mobile-filter
 import { TripRowCard } from "@/components/client/trip-row-card";
 import { MobileStickyBookingBar } from "@/components/client/mobile-sticky-booking-bar";
 import { formatIsoDate, formatMoney, routeThumbnail } from "@/utils/client-format";
+import {
+  JsonLd,
+  buildBreadcrumbJsonLd,
+  buildPageMetadata,
+  buildRouteJsonLd,
+} from "@/lib/seo";
 
 const TIME_RANGE_KEYS = [
   "early_morning",
@@ -26,6 +32,29 @@ const TIME_RANGE_KEYS = [
   "evening",
   "night",
 ];
+
+export async function generateMetadata({ params }) {
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "client.route_show" });
+  let route;
+  try {
+    route = await getRouteBySlug(slug);
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) {
+      return { title: t("meta_title") };
+    }
+    throw err;
+  }
+  const title = t("meta_title_dynamic").replace(":name", route.name);
+  const description = t("meta_description_dynamic").replace(":name", route.name);
+  return buildPageMetadata({
+    title,
+    description,
+    locale,
+    path: `${CLIENT_ROUTES.routesIndex}/${slug}`,
+    images: route.thumbnail_url || undefined,
+  });
+}
 
 function todayIso() {
   return new Date().toISOString().slice(0, 10);
@@ -212,6 +241,23 @@ export default async function RouteShowPage({ params, searchParams }) {
   };
   return (
     <main>
+      <JsonLd
+        data={[
+          buildRouteJsonLd(route, locale, `${CLIENT_ROUTES.routesIndex}/${slug}`),
+          buildBreadcrumbJsonLd({
+            name: route.name,
+            locale,
+            items: [
+              { name: "Home", path: CLIENT_ROUTES.home },
+              { name: "Routes", path: CLIENT_ROUTES.routesIndex },
+              {
+                name: route.name,
+                path: `${CLIENT_ROUTES.routesIndex}/${slug}`,
+              },
+            ],
+          }),
+        ]}
+      />
       <section
         id="search-section"
         className="ksb-hero ksb-section-hero relative z-elevated text-white"

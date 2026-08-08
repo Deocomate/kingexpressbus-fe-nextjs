@@ -4,6 +4,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listHotels } from "@/services/hotel-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { normalizeImageList } from "@/utils/client-format";
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "client.hotels" });
+  return buildPageMetadata({
+    title: t("index.meta_title"),
+    description: t("index.meta_description"),
+    locale,
+    path: CLIENT_ROUTES.hotels,
+  });
+}
 
 export default async function HotelsIndexPage({ params }) {
   const { locale } = await params;
@@ -43,29 +55,21 @@ export default async function HotelsIndexPage({ params }) {
                   <img
                     src={thumb}
                     alt={hotel.name}
-                    className="h-52 w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="space-y-2 p-5">
-                    <h2 className="font-display text-xl font-extrabold group-hover:text-brand-700">
+                  <div className="space-y-2 p-4">
+                    <h2 className="font-display text-xl font-extrabold text-ink group-hover:text-brand-700">
                       {hotel.name}
                     </h2>
                     {hotel.address ? (
-                      <p className="flex items-start gap-2 text-sm text-muted">
+                      <p className="inline-flex items-start gap-2 text-sm text-muted">
                         <MapPinned className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
                         <span>{hotel.address}</span>
                       </p>
                     ) : null}
-                    {hotel.short_description ? (
-                      <p className="line-clamp-3 text-sm text-muted">
-                        {hotel.short_description}
-                      </p>
-                    ) : null}
-                    {hotel.rating_score ? (
-                      <p className="text-sm font-semibold text-brand-700">
-                        {hotel.rating_score}
-                        {hotel.rating_label ? ` · ${hotel.rating_label}` : ""}
-                      </p>
-                    ) : null}
+                    <p className="line-clamp-2 text-sm text-muted">
+                      {hotel.short_description}
+                    </p>
                     <span className="inline-flex text-sm font-semibold text-brand-700">
                       {t("index.view_details")}
                     </span>

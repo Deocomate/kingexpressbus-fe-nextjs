@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listRoutes } from "@/services/booking-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
+import { buildPageMetadata } from "@/lib/seo";
 
 /**
  * `/tim-kiem` search redirect: given origin/destination province ids and a
@@ -9,6 +10,21 @@ import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
  * Exists mainly for bookmarked `/tim-kiem?...` links; search-bar already
  * resolves client-side. Only province-level ids are honored.
  */
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "client.routes.index",
+  });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.search,
+    noIndex: true,
+  });
+}
+
 export default async function SearchRedirectPage({ params, searchParams }) {
   const { locale } = await params;
   const sp = await searchParams;

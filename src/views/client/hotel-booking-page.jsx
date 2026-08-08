@@ -3,6 +3,23 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ApiError } from "@/services/api-base";
 import { getHotelBySlug, listHotels } from "@/services/hotel-api";
 import { HotelBookingForm } from "@/components/client/hotel-booking-form";
+import { buildPageMetadata } from "@/lib/seo";
+import { CLIENT_ROUTES } from "@/services/client-routes";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "client.hotels.booking",
+  });
+  return buildPageMetadata({
+    title: t("meta_title"),
+    description: t("meta_description"),
+    locale,
+    path: CLIENT_ROUTES.hotelBooking,
+    noIndex: true,
+  });
+}
 
 export default async function HotelBookingPage({ params, searchParams }) {
   const { locale } = await params;

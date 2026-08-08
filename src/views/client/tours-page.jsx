@@ -4,6 +4,18 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listTours } from "@/services/tour-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatMoney } from "@/utils/client-format";
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "client.tours" });
+  return buildPageMetadata({
+    title: t("index.meta_title"),
+    description: t("index.meta_description"),
+    locale,
+    path: CLIENT_ROUTES.tours,
+  });
+}
 
 export default async function ToursIndexPage({ params }) {
   const { locale } = await params;

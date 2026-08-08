@@ -5,6 +5,35 @@ import { ApiError } from "@/services/api-base";
 import { getTourBySlug } from "@/services/tour-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatMoney, normalizeImageList } from "@/utils/client-format";
+import {
+  JsonLd,
+  buildBreadcrumbJsonLd,
+  buildPageMetadata,
+  buildTourJsonLd,
+} from "@/lib/seo";
+
+export async function generateMetadata({ params }) {
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "client.tours" });
+  let tour;
+  try {
+    tour = await getTourBySlug(slug);
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) {
+      return { title: t("index.meta_title") };
+    }
+    throw err;
+  }
+  return buildPageMetadata({
+    title: t("detail.meta_title", { name: tour.name }),
+    description:
+      tour.short_description ||
+      t("detail.meta_description_fallback", { name: tour.name }),
+    locale,
+    path: `${CLIENT_ROUTES.tours}/${slug}`,
+    images: tour.thumbnail_url || undefined,
+  });
+}
 
 export default async function TourDetailPage({ params }) {
   const { locale, slug } = await params;
@@ -26,6 +55,20 @@ export default async function TourDetailPage({ params }) {
 
   return (
     <main className="bg-page text-ink">
+      <JsonLd
+        data={[
+          buildTourJsonLd(tour, locale, `${CLIENT_ROUTES.tours}/${slug}`),
+          buildBreadcrumbJsonLd({
+            name: tour.name,
+            locale,
+            items: [
+              { name: "Home", path: CLIENT_ROUTES.home },
+              { name: "Tours", path: CLIENT_ROUTES.tours },
+              { name: tour.name, path: `${CLIENT_ROUTES.tours}/${slug}` },
+            ],
+          }),
+        ]}
+      />
       <section className="relative min-h-[48vh] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

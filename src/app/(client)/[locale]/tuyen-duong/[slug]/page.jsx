@@ -1,1 +1,1 @@
-export { default } from "@/views/client/route-by-slug-page";
+export { default, generateMetadata } from "@/views/client/route-by-slug-page";
