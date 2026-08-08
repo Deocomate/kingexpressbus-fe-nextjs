@@ -22,7 +22,7 @@ export function AuthGate({ children }) {
     getMe()
       .then((u) => {
         if (cancelled) return;
-        if (u.role !== "admin") {
+        if (!u || u.role !== "admin") {
           setStatus("redirecting");
           router.replace(ADMIN_ROUTES.login);
           return;
