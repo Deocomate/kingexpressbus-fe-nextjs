@@ -27,6 +27,7 @@ import {
 
 const schema = z.object({
   is_default: z.boolean(),
+  online_payment_enabled: z.boolean(),
   title: z.string().nullable(),
   description: z.string().nullable(),
   logo: z.custom().nullable(),
@@ -46,6 +47,7 @@ const schema = z.object({
 function toFormValues(p) {
   return {
     is_default: p.is_default,
+    online_payment_enabled: p.online_payment_enabled !== false,
     title: p.title,
     description: p.description,
     logo: p.logo_url ? { previewUrl: p.logo_url } : null,
@@ -76,6 +78,7 @@ export function WebProfileSection() {
     try {
       await adminUpdate(`/admin/web-profiles/${editing.id}`, {
         is_default: values.is_default,
+        online_payment_enabled: values.online_payment_enabled,
         title: values.title || null,
         description: values.description || null,
         logo_url: await resolveImageField(values.logo, "web-profiles"),
@@ -156,6 +159,23 @@ export function WebProfileSection() {
                       />
                     </FormControl>
                     <FormLabel className="!mt-0">Đặt làm mặc định</FormLabel>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="online_payment_enabled"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center gap-2 space-y-0 sm:col-span-2">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="!mt-0">
+                      Bật thanh toán online (SePay)
+                    </FormLabel>
                   </FormItem>
                 )}
               />

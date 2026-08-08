@@ -4,6 +4,7 @@ import "server-only";
  * @typedef {Object} WebProfile
  * @property {number} id
  * @property {string} profile_name
+ * @property {boolean} online_payment_enabled
  * @property {string|null} title
  * @property {string|null} description
  * @property {string|null} logo_url

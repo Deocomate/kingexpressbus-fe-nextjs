@@ -138,6 +138,7 @@ export function BookingForm({ trip, date, locale, webProfile }) {
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [notes, setNotes] = useState("");
+  const onlinePaymentEnabled = webProfile?.online_payment_enabled !== false;
   const [paymentMethod, setPaymentMethod] = useState("cash_on_pickup");
   const [confirmInfo, setConfirmInfo] = useState(false);
 
@@ -617,17 +618,21 @@ export function BookingForm({ trip, date, locale, webProfile }) {
                 </h3>
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                   {[
-                    {
-                      key: "online_banking",
-                      label: t("payment_online_label"),
-                      description: t("payment_online_desc"),
-                    },
+                    onlinePaymentEnabled
+                      ? {
+                          key: "online_banking",
+                          label: t("payment_online_label"),
+                          description: t("payment_online_desc"),
+                        }
+                      : null,
                     {
                       key: "cash_on_pickup",
                       label: t("payment_cash_label"),
                       description: t("payment_cash_desc"),
                     },
-                  ].map((method) => {
+                  ]
+                    .filter(Boolean)
+                    .map((method) => {
                     const selected = paymentMethod === method.key;
                     return (
                       <label

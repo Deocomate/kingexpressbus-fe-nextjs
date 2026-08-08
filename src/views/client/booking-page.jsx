@@ -82,6 +82,7 @@ export default async function BookingCreatePage({ params, searchParams }) {
         webProfile={{
           hotline: webProfile.hotline,
           zalo_url: webProfile.zalo_url,
+          online_payment_enabled: webProfile.online_payment_enabled !== false,
         }}
       />
     </main>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import { toast } from "sonner";
 import { getTripDetail } from "@/services/booking-api";
@@ -11,7 +12,7 @@ import {
   adminUpdateBooking,
 } from "@/services/admin-bookings";
 import { parseBookingNotes } from "@/utils/booking-notes";
-import { getErrorMessage } from "@/services/admin-api";
+import { adminGet, getErrorMessage } from "@/services/admin-api";
 import { ApiError } from "@/services/api-base";
 import { OptionsCombobox } from "@/components/admin/options-combobox";
 import { DatePicker } from "@/components/admin/date-picker";
@@ -87,6 +88,16 @@ export function BookingFormDialog({
   const [tripDetail, setTripDetail] = useState(null);
   const [loadingTrip, setLoadingTrip] = useState(false);
 
+  const { data: webProfiles } = useQuery({
+    queryKey: ["admin-web-profiles"],
+    queryFn: () => adminGet("/admin/web-profiles"),
+    enabled: open && !editing,
+  });
+  const defaultProfile =
+    (webProfiles ?? []).find((p) => p.is_default) ?? (webProfiles ?? [])[0];
+  const onlinePaymentEnabled =
+    defaultProfile?.online_payment_enabled !== false;
+
   const form = useForm({
     resolver: zodResolver(schema),
     values: open
@@ -136,6 +147,13 @@ export function BookingFormDialog({
       cancelled = true;
     };
   }, [trip, bookingDate]);
+
+  useEffect(() => {
+    if (editing || onlinePaymentEnabled) return;
+    if (form.getValues("payment_method") === "online_banking") {
+      form.setValue("payment_method", "cash_on_pickup");
+    }
+  }, [editing, onlinePaymentEnabled, form]);
 
   async function onSubmit(values) {
     try {
@@ -459,9 +477,11 @@ export function BookingFormDialog({
                             <SelectItem value="cash_on_pickup">
                               Tiền mặt khi lên xe
                             </SelectItem>
-                            <SelectItem value="online_banking">
-                              Chuyển khoản (SePay)
-                            </SelectItem>
+                            {onlinePaymentEnabled ? (
+                              <SelectItem value="online_banking">
+                                Chuyển khoản (SePay)
+                              </SelectItem>
+                            ) : null}
                           </SelectContent>
                         </Select>
                       </FormControl>
