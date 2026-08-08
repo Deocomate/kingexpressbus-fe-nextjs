@@ -14,6 +14,10 @@ import {
   Settings,
   PanelLeftClose,
   PanelLeft,
+  Hotel,
+  BedDouble,
+  Map,
+  Compass,
 } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { ADMIN_ROUTES } from "@/services/admin-routes";
@@ -27,10 +31,14 @@ import {
 const NAV_ITEMS = [
   { label: "Tổng quan", href: ADMIN_ROUTES.dashboard, icon: LayoutDashboard },
   { label: "Đặt vé", href: ADMIN_ROUTES.bookings, icon: Ticket },
+  { label: "Đặt phòng", href: ADMIN_ROUTES.hotelBookings, icon: BedDouble },
+  { label: "Đặt tour", href: ADMIN_ROUTES.tourBookings, icon: Compass },
   { label: "Địa điểm", href: ADMIN_ROUTES.locations, icon: MapPin },
   { label: "Đội xe", href: ADMIN_ROUTES.buses, icon: Truck },
   { label: "Tuyến đường", href: ADMIN_ROUTES.routes, icon: RouteIcon },
   { label: "Chuyến xe", href: ADMIN_ROUTES.trips, icon: Bus },
+  { label: "Khách sạn", href: ADMIN_ROUTES.hotels, icon: Hotel },
+  { label: "Tour", href: ADMIN_ROUTES.tours, icon: Map },
   { label: "Phụ thu", href: ADMIN_ROUTES.surcharges, icon: CircleDollarSign },
   { label: "Cấu hình website", href: ADMIN_ROUTES.website, icon: Settings },
 ];

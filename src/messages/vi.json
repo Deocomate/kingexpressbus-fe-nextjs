@@ -1209,6 +1209,122 @@
         "primary_button": "Tìm chuyến ngay",
         "secondary_button": "Liên hệ tư vấn"
       }
+    },
+    "hotels": {
+      "index": {
+        "eyebrow": "SA PA",
+        "title": "Khách sạn Sa Pa",
+        "subtitle": "Đặt phòng Sapa Cosy Hotel và các chỗ nghỉ đối tác. Thanh toán tại chỗ, không cần thẻ.",
+        "empty": "Chưa có khách sạn.",
+        "view_details": "Xem chi tiết"
+      },
+      "detail": {
+        "eyebrow": "KHÁCH SẠN",
+        "amenities": "Tiện nghi",
+        "rooms": "Loại phòng",
+        "rooms_hint": "Chọn phòng rồi điền ngày nhận/trả.",
+        "available": "Còn {count} phòng",
+        "per_night": "/ đêm",
+        "book_room": "Đặt phòng",
+        "policies": "Quy tắc chung",
+        "check_in": "Nhận phòng",
+        "check_out": "Trả phòng",
+        "payment_policy": "Thanh toán",
+        "cancel_policy": "Hủy phòng"
+      },
+      "booking": {
+        "eyebrow": "ĐẶT PHÒNG",
+        "title": "Thông tin đặt phòng",
+        "room": "Loại phòng",
+        "night": "đêm",
+        "check_in": "Ngày nhận",
+        "check_out": "Ngày trả",
+        "rooms_count": "Số phòng",
+        "adults": "Người lớn",
+        "children": "Trẻ em",
+        "breakfast": "Suất ăn sáng / đêm",
+        "name": "Họ tên",
+        "email": "Email",
+        "phone": "Điện thoại",
+        "payment": "Hình thức thanh toán",
+        "pay_cash": "Thanh toán tại chỗ nghỉ",
+        "pay_bank": "Chuyển khoản thủ công",
+        "payment_note": "Bạn sẽ không bị trừ tiền ngay. Admin xác nhận sau khi nhận yêu cầu.",
+        "notes": "Ghi chú",
+        "submit": "Gửi yêu cầu đặt phòng",
+        "submitting": "Đang gửi…",
+        "nights": "Số đêm",
+        "unit_price": "Giá phòng/đêm",
+        "total": "Tổng tạm tính",
+        "back_to_hotel": "Quay lại khách sạn",
+        "no_rooms": "Chưa có phòng.",
+        "errors": {
+          "dates": "Vui lòng chọn ngày nhận/trả hợp lệ.",
+          "generic": "Không thể tạo đặt phòng. Vui lòng thử lại."
+        }
+      },
+      "success": {
+        "eyebrow": "THÀNH CÔNG",
+        "title": "Đã nhận yêu cầu đặt phòng",
+        "subtitle": "Chúng tôi sẽ xác nhận qua email trong thời gian sớm nhất.",
+        "code": "Mã đặt chỗ",
+        "hotel": "Khách sạn",
+        "room": "Phòng",
+        "dates": "Ngày lưu trú",
+        "total": "Tổng tiền",
+        "missing": "Không tải được chi tiết đặt phòng.",
+        "back": "Về danh sách khách sạn"
+      }
+    },
+    "tours": {
+      "index": {
+        "eyebrow": "SA PA",
+        "title": "Tour Sa Pa",
+        "subtitle": "Đặt tour khám phá Sa Pa. Nội dung mẫu có thể cập nhật trên trang quản trị.",
+        "empty": "Chưa có tour.",
+        "duration_tba": "Thời lượng cập nhật sau"
+      },
+      "detail": {
+        "eyebrow": "TOUR",
+        "book": "Đặt tour",
+        "itinerary": "Lịch trình",
+        "highlights": "Điểm nổi bật",
+        "includes": "Bao gồm",
+        "excludes": "Không bao gồm"
+      },
+      "booking": {
+        "eyebrow": "ĐẶT TOUR",
+        "title": "Thông tin đặt tour",
+        "date": "Ngày đi",
+        "guests": "Số khách",
+        "name": "Họ tên",
+        "email": "Email",
+        "phone": "Điện thoại",
+        "payment": "Hình thức thanh toán",
+        "pay_cash": "Thanh toán tại chỗ",
+        "pay_bank": "Chuyển khoản thủ công",
+        "payment_note": "Không trừ tiền ngay. Admin sẽ xác nhận yêu cầu.",
+        "notes": "Ghi chú",
+        "submit": "Gửi yêu cầu đặt tour",
+        "submitting": "Đang gửi…",
+        "total": "Tổng tạm tính",
+        "back_to_tour": "Quay lại tour",
+        "errors": {
+          "generic": "Không thể tạo đặt tour. Vui lòng thử lại."
+        }
+      },
+      "success": {
+        "eyebrow": "THÀNH CÔNG",
+        "title": "Đã nhận yêu cầu đặt tour",
+        "subtitle": "Chúng tôi sẽ xác nhận qua email sớm nhất.",
+        "code": "Mã đặt chỗ",
+        "tour": "Tour",
+        "date": "Ngày",
+        "guests": "Số khách",
+        "total": "Tổng tiền",
+        "missing": "Không tải được chi tiết.",
+        "back": "Về danh sách tour"
+      }
     }
   }
 }

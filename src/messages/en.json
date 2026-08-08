@@ -1209,6 +1209,122 @@
         "primary_button": "Find trips now",
         "secondary_button": "Contact support"
       }
+    },
+    "hotels": {
+      "index": {
+        "eyebrow": "SA PA",
+        "title": "Sa Pa Hotels",
+        "subtitle": "Book Sapa Cosy Hotel and partner stays. Pay at property — no card required.",
+        "empty": "No hotels yet.",
+        "view_details": "View details"
+      },
+      "detail": {
+        "eyebrow": "HOTEL",
+        "amenities": "Amenities",
+        "rooms": "Room types",
+        "rooms_hint": "Pick a room, then choose your dates.",
+        "available": "{count} rooms left",
+        "per_night": "/ night",
+        "book_room": "Book room",
+        "policies": "House rules",
+        "check_in": "Check-in",
+        "check_out": "Check-out",
+        "payment_policy": "Payment",
+        "cancel_policy": "Cancellation"
+      },
+      "booking": {
+        "eyebrow": "BOOKING",
+        "title": "Hotel booking details",
+        "room": "Room type",
+        "night": "night",
+        "check_in": "Check-in",
+        "check_out": "Check-out",
+        "rooms_count": "Rooms",
+        "adults": "Adults",
+        "children": "Children",
+        "breakfast": "Breakfast / night",
+        "name": "Full name",
+        "email": "Email",
+        "phone": "Phone",
+        "payment": "Payment method",
+        "pay_cash": "Pay at property",
+        "pay_bank": "Manual bank transfer",
+        "payment_note": "You will not be charged now. An admin will confirm your request.",
+        "notes": "Notes",
+        "submit": "Submit booking request",
+        "submitting": "Submitting…",
+        "nights": "Nights",
+        "unit_price": "Room / night",
+        "total": "Estimated total",
+        "back_to_hotel": "Back to hotel",
+        "no_rooms": "No rooms available.",
+        "errors": {
+          "dates": "Please choose valid check-in/out dates.",
+          "generic": "Could not create booking. Please try again."
+        }
+      },
+      "success": {
+        "eyebrow": "SUCCESS",
+        "title": "Hotel booking request received",
+        "subtitle": "We will confirm by email as soon as possible.",
+        "code": "Booking code",
+        "hotel": "Hotel",
+        "room": "Room",
+        "dates": "Stay dates",
+        "total": "Total",
+        "missing": "Could not load booking details.",
+        "back": "Back to hotels"
+      }
+    },
+    "tours": {
+      "index": {
+        "eyebrow": "SA PA",
+        "title": "Sa Pa Tours",
+        "subtitle": "Book Sa Pa tours. Placeholder content can be updated in admin.",
+        "empty": "No tours yet.",
+        "duration_tba": "Duration TBA"
+      },
+      "detail": {
+        "eyebrow": "TOUR",
+        "book": "Book tour",
+        "itinerary": "Itinerary",
+        "highlights": "Highlights",
+        "includes": "Includes",
+        "excludes": "Excludes"
+      },
+      "booking": {
+        "eyebrow": "BOOKING",
+        "title": "Tour booking details",
+        "date": "Tour date",
+        "guests": "Guests",
+        "name": "Full name",
+        "email": "Email",
+        "phone": "Phone",
+        "payment": "Payment method",
+        "pay_cash": "Pay on-site",
+        "pay_bank": "Manual bank transfer",
+        "payment_note": "No charge now. An admin will confirm your request.",
+        "notes": "Notes",
+        "submit": "Submit tour request",
+        "submitting": "Submitting…",
+        "total": "Estimated total",
+        "back_to_tour": "Back to tour",
+        "errors": {
+          "generic": "Could not create tour booking. Please try again."
+        }
+      },
+      "success": {
+        "eyebrow": "SUCCESS",
+        "title": "Tour booking request received",
+        "subtitle": "We will confirm by email shortly.",
+        "code": "Booking code",
+        "tour": "Tour",
+        "date": "Date",
+        "guests": "Guests",
+        "total": "Total",
+        "missing": "Could not load details.",
+        "back": "Back to tours"
+      }
     }
   }
 }

@@ -10,4 +10,8 @@ export const ADMIN_ROUTES = {
   trips: "/quan-tri/chuyen-xe",
   surcharges: "/quan-tri/phu-phi",
   bookings: "/quan-tri/dat-ve",
+  hotels: "/quan-tri/khach-san",
+  hotelBookings: "/quan-tri/dat-phong",
+  tours: "/quan-tri/tour",
+  tourBookings: "/quan-tri/dat-tour",
 };
