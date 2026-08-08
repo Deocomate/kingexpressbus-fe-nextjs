@@ -109,6 +109,7 @@ export function NavBar({ locale, brandTitle, brandLogo, hotline, mainMenu }) {
     setAuthUser(null);
     setAccountOpen(false);
     setMobileOpen(false);
+    router.push(localePath(locale, CLIENT_ROUTES.home));
     router.refresh();
   }
   const languageOptions = [

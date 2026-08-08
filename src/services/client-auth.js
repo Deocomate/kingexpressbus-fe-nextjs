@@ -111,7 +111,9 @@ export function resendVerification(input) {
 export function logout() {
   return apiFetch("/auth/logout", {
     method: "POST",
+    headers: JSON_HEADERS,
     credentials: "include",
+    body: "{}",
   }).finally(() => {
     notifyAuthChanged();
   });
