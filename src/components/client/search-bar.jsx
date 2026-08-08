@@ -23,7 +23,21 @@ function formatDisplayDate(iso) {
   if (!y || !m || !d) return "";
   return `${d}/${m}/${y}`;
 }
-export function SearchBar({ locale, provinces, submitLabel }) {
+function findLocation(locations, id) {
+  if (id == null || id === "") return null;
+  const numericId = Number(id);
+  if (!Number.isFinite(numericId)) return null;
+  return locations.find((item) => item.id === numericId) ?? null;
+}
+export function SearchBar({
+  locale,
+  provinces,
+  submitLabel,
+  initialOriginId,
+  initialDestinationId,
+  initialDate,
+  initialReturnDate,
+}) {
   const t = useTranslations("client.search");
   const router = useRouter();
   const locations = useMemo(
@@ -36,13 +50,21 @@ export function SearchBar({ locale, provinces, submitLabel }) {
       })),
     [provinces],
   );
-  const [origin, setOrigin] = useState(locations[0] ?? null);
-  const [destination, setDestination] = useState(
-    locations[1] ?? locations[0] ?? null,
+  const [origin, setOrigin] = useState(
+    () => findLocation(locations, initialOriginId) ?? locations[0] ?? null,
   );
-  const [departureDate, setDepartureDate] = useState(todayIso());
-  const [returnDate, setReturnDate] = useState("");
-  const [showReturn, setShowReturn] = useState(false);
+  const [destination, setDestination] = useState(
+    () =>
+      findLocation(locations, initialDestinationId) ??
+      locations[1] ??
+      locations[0] ??
+      null,
+  );
+  const [departureDate, setDepartureDate] = useState(
+    () => initialDate || todayIso(),
+  );
+  const [returnDate, setReturnDate] = useState(() => initialReturnDate || "");
+  const [showReturn, setShowReturn] = useState(() => !!initialReturnDate);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [originQuery, setOriginQuery] = useState("");
   const [destinationQuery, setDestinationQuery] = useState("");
@@ -53,6 +75,27 @@ export function SearchBar({ locale, provinces, submitLabel }) {
   const destinationSearchRef = useRef(null);
   const departureInputRef = useRef(null);
   const returnInputRef = useRef(null);
+  // Keep fields in sync when the parent route/search context changes
+  // (e.g. soft-nav between /tuyen-duong/[slug] pages).
+  useEffect(() => {
+    const nextOrigin = findLocation(locations, initialOriginId);
+    if (nextOrigin) setOrigin(nextOrigin);
+    const nextDestination = findLocation(locations, initialDestinationId);
+    if (nextDestination) setDestination(nextDestination);
+  }, [locations, initialOriginId, initialDestinationId]);
+  useEffect(() => {
+    if (initialDate) setDepartureDate(initialDate);
+  }, [initialDate]);
+  useEffect(() => {
+    if (initialOriginId == null && initialDestinationId == null) return;
+    if (initialReturnDate) {
+      setReturnDate(initialReturnDate);
+      setShowReturn(true);
+    } else {
+      setReturnDate("");
+      setShowReturn(false);
+    }
+  }, [initialOriginId, initialDestinationId, initialReturnDate]);
   useEffect(() => {
     if (!activeDropdown) return;
     function onPointerDown(event) {

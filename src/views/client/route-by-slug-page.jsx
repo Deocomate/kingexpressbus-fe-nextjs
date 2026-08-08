@@ -85,6 +85,7 @@ export default async function RouteShowPage({ params, searchParams }) {
     throw err;
   }
   const date = sp.date ?? todayIso();
+  const returnDate = typeof sp.return_date === "string" ? sp.return_date : "";
   const [t, provinces, allTrips] = await Promise.all([
     getTranslations("client.route_show"),
     listProvinces(),
@@ -296,7 +297,14 @@ export default async function RouteShowPage({ params, searchParams }) {
             </div>
           </div>
           <div className="ksb-panel-strong ksb-hero-search mt-8 text-ink">
-            <SearchBar locale={locale} provinces={provinces} />
+            <SearchBar
+              locale={locale}
+              provinces={provinces}
+              initialOriginId={route.province_start_id}
+              initialDestinationId={route.province_end_id}
+              initialDate={date}
+              initialReturnDate={returnDate}
+            />
           </div>
         </div>
       </section>
