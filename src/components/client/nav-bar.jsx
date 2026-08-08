@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ChevronDown, Menu, Phone, Ticket, X } from "lucide-react";
-import { getMe, logout } from "@/services/client-auth";
+import { AUTH_CHANGED_EVENT, getMe, logout } from "@/services/client-auth";
 import {
   CLIENT_ROUTES,
   localePath,
@@ -42,17 +42,22 @@ export function NavBar({ locale, brandTitle, brandLogo, hotline, mainMenu }) {
   }
   useEffect(() => {
     let cancelled = false;
-    getMe()
-      .then((user) => {
-        if (!cancelled) setAuthUser(user ?? null);
-      })
-      .catch(() => {
-        if (!cancelled) setAuthUser(null);
-      });
+    function refreshAuth() {
+      getMe()
+        .then((user) => {
+          if (!cancelled) setAuthUser(user ?? null);
+        })
+        .catch(() => {
+          if (!cancelled) setAuthUser(null);
+        });
+    }
+    refreshAuth();
+    window.addEventListener(AUTH_CHANGED_EVENT, refreshAuth);
     return () => {
       cancelled = true;
+      window.removeEventListener(AUTH_CHANGED_EVENT, refreshAuth);
     };
-  }, []);
+  }, [pathname]);
   useEffect(() => {
     function onScroll() {
       setScrolled(window.scrollY > 24);
@@ -121,7 +126,8 @@ export function NavBar({ locale, brandTitle, brandLogo, hotline, mainMenu }) {
   const currentLanguage =
     languageOptions.find((l) => l.code === locale) ?? languageOptions[0];
   const hotlineTel = hotline ? hotline.replace(/[^\d+]/g, "") : "";
-  const isCustomer = authUser?.role === "customer";
+  const isCustomer =
+    authUser?.role === "customer" || authUser?.role === "admin";
   const customerLinks = isCustomer
     ? [
         {

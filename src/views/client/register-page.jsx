@@ -23,6 +23,7 @@ export default async function RegisterPage({ params, searchParams }) {
       redirectTo={sp.redirect_to}
       initialEmail={typeof sp.email === "string" ? sp.email : ""}
       initialName={typeof sp.name === "string" ? sp.name : ""}
+      startOnVerify={sp.verify === "1"}
     />
   );
 }

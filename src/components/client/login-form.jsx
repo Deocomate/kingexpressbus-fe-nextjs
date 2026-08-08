@@ -58,15 +58,23 @@ export function LoginForm({ locale, redirectTo, initialEmail = "" }) {
       router.push(target);
       router.refresh();
     } catch (err) {
-      if (err instanceof ApiError) {
-        setErrors({
-          login: tFlash("login_invalid"),
-        });
-      } else {
-        setErrors({
-          login: tFlash("login_invalid"),
-        });
+      if (err instanceof ApiError && err.status === 403) {
+        const detail = String(err.body?.detail ?? "").toLowerCase();
+        if (detail.includes("not verified")) {
+          const params = new URLSearchParams({
+            redirect_to: target,
+            email: loginValue.trim(),
+            verify: "1",
+          });
+          router.push(
+            `${localePath(locale, CLIENT_ROUTES.register)}?${params.toString()}`,
+          );
+          return;
+        }
       }
+      setErrors({
+        login: tFlash("login_invalid"),
+      });
     } finally {
       setSubmitting(false);
     }

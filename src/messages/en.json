@@ -930,6 +930,20 @@
         "login_now": "Log in now",
         "email_label": "Email"
       },
+      "verify": {
+        "title": "Verify your email",
+        "subtitle": "Enter the 4-digit code sent to {email}.",
+        "code_label": "Verification code",
+        "digit_aria": "Digit {n}",
+        "submit": "Confirm and sign in",
+        "submitting": "Verifying…",
+        "code_invalid": "The code is invalid or expired.",
+        "resend_prompt": "Didn't get a code?",
+        "resend": "Resend code",
+        "resending": "Sending…",
+        "resend_sent": "A new code was sent if the email needs verification.",
+        "back": "Back to registration"
+      },
       "forgot_password": {
         "meta_title": "Forgot password",
         "meta_description": "Enter your email to receive a password reset link.",
