@@ -20,13 +20,18 @@ import { register, isSafeRedirectPath } from "@/services/client-auth";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 
 /** Register form — see login-form for the split rationale. */
-export function RegisterForm({ locale, redirectTo }) {
+export function RegisterForm({
+  locale,
+  redirectTo,
+  initialEmail = "",
+  initialName = "",
+}) {
   const t = useTranslations("client.auth.register");
   const tValidation = useTranslations("client.auth.validation");
   const tCommon = useTranslations("client.auth.common");
   const router = useRouter();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(initialName);
+  const [email, setEmail] = useState(initialEmail);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -35,7 +40,9 @@ export function RegisterForm({ locale, redirectTo }) {
   const target = isSafeRedirectPath(redirectTo)
     ? redirectTo
     : localePath(locale, CLIENT_ROUTES.account);
-  const loginHref = `${localePath(locale, CLIENT_ROUTES.login)}?redirect_to=${encodeURIComponent(target)}`;
+  const loginHref = `${localePath(locale, CLIENT_ROUTES.login)}?redirect_to=${encodeURIComponent(target)}${
+    initialEmail ? `&email=${encodeURIComponent(initialEmail)}` : ""
+  }`;
   function validate() {
     const next = {};
     if (!name.trim()) next.name = tValidation("name_required");
@@ -68,11 +75,6 @@ export function RegisterForm({ locale, redirectTo }) {
       router.push(target);
       router.refresh();
     } catch (err) {
-      // Best-effort field targeting: the API doesn't return structured
-      // per-field validation errors; only
-      // a free-text `detail` string on 422/400. Sniff for "phone" to route
-      // the message to the phone field, otherwise assume email conflict
-      // (the far more common case — email is required & unique).
       if (err instanceof ApiError) {
         const body = err.body;
         const detail = (body?.detail ?? "").toLowerCase();
@@ -95,30 +97,29 @@ export function RegisterForm({ locale, redirectTo }) {
     }
   }
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-page px-4 py-12 sm:px-6 lg:px-8">
-      <div className="relative z-10 grid w-full max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
-        {" "}
-        <div className="hidden space-y-8 pr-10 text-ink lg:block">
+    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden bg-page px-4 py-10 sm:px-6 lg:px-8">
+      <div className="relative z-10 grid w-full max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
+        <div className="hidden space-y-8 pr-6 text-ink lg:block">
           <div>
             <span className="inline-flex items-center rounded-sm bg-brand-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-              <Gift className="mr-2 h-3.5 w-3.5" aria-hidden="true" />{" "}
+              <Gift className="mr-2 h-3.5 w-3.5" aria-hidden="true" />
               {t("badge")}
             </span>
-            <h1 className="mt-6 text-5xl font-semibold leading-tight tracking-tight">
-              {t("welcome_title")} <br />
+            <h1 className="mt-6 font-display text-4xl font-extrabold leading-tight tracking-tight xl:text-5xl">
+              {t("welcome_title")}{" "}
               <span className="text-accent-500">{t("welcome_brand")}</span>
             </h1>
-            <p className="mt-4 text-lg leading-8 text-muted">
+            <p className="mt-4 max-w-md text-base leading-7 text-muted">
               {t("welcome_description")}
             </p>
           </div>
-          <div className="mt-10 grid gap-5">
+          <div className="grid gap-4">
             <div className="kx-panel flex items-start gap-4 p-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-accent-500 text-white">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-accent-500 text-white">
                 <Coins className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">
+                <h3 className="text-base font-semibold">
                   {t("feature_points_title")}
                 </h3>
                 <p className="mt-1 text-sm text-muted">
@@ -127,11 +128,11 @@ export function RegisterForm({ locale, redirectTo }) {
               </div>
             </div>
             <div className="kx-panel flex items-start gap-4 p-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-brand-600 text-white">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-brand-600 text-white">
                 <Tag className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">
+                <h3 className="text-base font-semibold">
                   {t("feature_offers_title")}
                 </h3>
                 <p className="mt-1 text-sm text-muted">
@@ -140,23 +141,23 @@ export function RegisterForm({ locale, redirectTo }) {
               </div>
             </div>
           </div>
-        </div>{" "}
-        <div className="kx-panel-strong relative mx-auto w-full max-w-lg overflow-hidden p-8 md:p-10 lg:ml-auto">
+        </div>
+
+        <div className="kx-panel-strong relative mx-auto w-full max-w-lg overflow-hidden p-7 sm:p-9 lg:ml-auto">
           <div className="absolute left-0 top-0 h-0.5 w-full bg-accent-500" />
-          <div className="mb-8 text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-800">
+          <div className="mb-7 text-center lg:text-left">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
               {t("form_title")}
             </h2>
-            <p className="mt-2 text-base text-neutral-500">
+            <p className="mt-2 text-sm text-muted sm:text-base">
               {t("form_subtitle")}
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {" "}
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="group/input relative">
               <label
                 htmlFor="name"
-                className="mb-1.5 ml-1 block text-sm font-semibold text-neutral-700"
+                className="mb-1.5 ml-0.5 block text-sm font-semibold text-neutral-700"
               >
                 {t("name_label")}
               </label>
@@ -173,26 +174,24 @@ export function RegisterForm({ locale, redirectTo }) {
                   className="kx-form-control w-full py-3.5 pl-11 pr-4 font-medium placeholder:text-neutral-400"
                   placeholder="Nguyễn Văn A"
                   autoComplete="name"
-                  autoFocus
+                  autoFocus={!initialName}
                 />
               </div>
-              {errors.name && (
-                <p className="mt-1.5 ml-1 flex items-center gap-1 text-sm text-red-500">
-                  <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />{" "}
+              {errors.name ? (
+                <p className="mt-1.5 ml-0.5 flex items-center gap-1 text-sm text-red-500">
+                  <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                   {errors.name}
                 </p>
-              )}
-            </div>{" "}
+              ) : null}
+            </div>
+
             <div className="group/input relative">
               <label
                 htmlFor="email"
-                className="mb-1.5 ml-1 block text-sm font-semibold text-neutral-700"
+                className="mb-1.5 ml-0.5 block text-sm font-semibold text-neutral-700"
               >
                 {t("email_label")}
               </label>
-              <p className="mb-2 ml-1 text-xs text-neutral-500">
-                {t("email_hint")}
-              </p>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 transition-colors group-focus-within/input:text-brand-600">
                   <Mail className="h-4 w-4" aria-hidden="true" />
@@ -208,23 +207,25 @@ export function RegisterForm({ locale, redirectTo }) {
                   autoComplete="email"
                 />
               </div>
-              {errors.email && (
-                <p className="mt-1.5 ml-1 flex items-center gap-1 text-sm text-red-500">
-                  <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />{" "}
+              {errors.email ? (
+                <p className="mt-1.5 ml-0.5 flex items-center gap-1 text-sm text-red-500">
+                  <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                   {errors.email}
                 </p>
+              ) : (
+                <p className="mt-1.5 ml-0.5 text-xs text-muted">
+                  {t("email_hint")}
+                </p>
               )}
-            </div>{" "}
+            </div>
+
             <div className="group/input relative">
               <label
                 htmlFor="phone"
-                className="mb-1.5 ml-1 block text-sm font-semibold text-neutral-700"
+                className="mb-1.5 ml-0.5 block text-sm font-semibold text-neutral-700"
               >
                 {t("phone_label")}
               </label>
-              <p className="mb-2 ml-1 text-xs text-neutral-500">
-                {t("phone_hint")}
-              </p>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 transition-colors group-focus-within/input:text-brand-600">
                   <Phone className="h-4 w-4" aria-hidden="true" />
@@ -240,25 +241,22 @@ export function RegisterForm({ locale, redirectTo }) {
                   autoComplete="tel"
                 />
               </div>
-              {errors.phone && (
-                <p className="mt-1.5 ml-1 flex items-center gap-1 text-sm text-red-500">
-                  <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />{" "}
+              {errors.phone ? (
+                <p className="mt-1.5 ml-0.5 flex items-center gap-1 text-sm text-red-500">
+                  <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                   {errors.phone}
                 </p>
-              )}
+              ) : null}
             </div>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              {" "}
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="group/input relative">
                 <label
                   htmlFor="password"
-                  className="mb-1.5 ml-1 block text-sm font-semibold text-neutral-700"
+                  className="mb-1.5 ml-0.5 block text-sm font-semibold text-neutral-700"
                 >
                   {t("password_label")}
                 </label>
-                <p className="mb-2 ml-1 text-xs text-neutral-500">
-                  {t("password_hint")}
-                </p>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 transition-colors group-focus-within/input:text-brand-600">
                     <Lock className="h-4 w-4" aria-hidden="true" />
@@ -272,19 +270,24 @@ export function RegisterForm({ locale, redirectTo }) {
                     className="kx-form-control w-full py-3.5 pl-11 pr-4 font-medium placeholder:text-neutral-400"
                     placeholder="••••••••"
                     autoComplete="new-password"
+                    autoFocus={Boolean(initialEmail && initialName)}
                   />
                 </div>
-                {errors.password && (
-                  <p className="mt-1.5 ml-1 flex items-center gap-1 text-sm text-red-500">
-                    <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />{" "}
+                {errors.password ? (
+                  <p className="mt-1.5 ml-0.5 flex items-center gap-1 text-sm text-red-500">
+                    <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                     {errors.password}
                   </p>
+                ) : (
+                  <p className="mt-1.5 ml-0.5 text-xs text-muted">
+                    {t("password_hint")}
+                  </p>
                 )}
-              </div>{" "}
+              </div>
               <div className="group/input relative">
                 <label
                   htmlFor="password_confirmation"
-                  className="mb-1.5 ml-1 block text-sm font-semibold text-neutral-700"
+                  className="mb-1.5 ml-0.5 block text-sm font-semibold text-neutral-700"
                 >
                   {t("password_confirmation_label")}
                 </label>
@@ -305,17 +308,20 @@ export function RegisterForm({ locale, redirectTo }) {
                 </div>
               </div>
             </div>
+
             <button
               type="submit"
               disabled={submitting}
-              className="kx-btn-primary w-full py-4 disabled:opacity-60"
+              aria-busy={submitting}
+              className="kx-btn-primary mt-1 w-full py-3.5 disabled:opacity-60"
             >
               <span className="flex items-center justify-center gap-2">
                 <UserPlus className="h-4 w-4" aria-hidden="true" />
-                <span>{t("submit")}</span>
+                <span>{submitting ? t("submitting") : t("submit")}</span>
               </span>
             </button>
-            <div className="relative my-6">
+
+            <div className="relative py-1">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-neutral-200" />
               </div>
@@ -325,17 +331,16 @@ export function RegisterForm({ locale, redirectTo }) {
                 </span>
               </div>
             </div>
-            <div className="text-center">
-              <p className="text-sm text-neutral-600">
-                {t("has_account")}{" "}
-                <Link
-                  href={loginHref}
-                  className="font-semibold text-brand-600 transition-colors hover:text-brand-700"
-                >
-                  {t("login_now")}
-                </Link>
-              </p>
-            </div>
+
+            <p className="text-center text-sm text-neutral-600">
+              {t("has_account")}{" "}
+              <Link
+                href={loginHref}
+                className="font-semibold text-brand-600 transition-colors hover:text-brand-700"
+              >
+                {t("login_now")}
+              </Link>
+            </p>
           </form>
         </div>
       </div>

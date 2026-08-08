@@ -10,6 +10,8 @@ import {
   PaymentSidebarNote,
   PaymentStatusBadge,
 } from "@/components/client/payment-status-poller";
+import { BookingSuccessAccountCta } from "@/components/client/booking-success-account-cta";
+
 function formatMoney(amount, locale) {
   return `${amount.toLocaleString(locale === "vi" ? "vi-VN" : "en-US")}đ`;
 }
@@ -21,6 +23,7 @@ function findStop(stops, id) {
   if (id == null) return null;
   return stops.find((s) => s.stop_id === id) ?? null;
 }
+
 export default async function BookingSuccessPage({ params, searchParams }) {
   const { locale, bookingId } = await params;
   const {
@@ -67,11 +70,10 @@ export default async function BookingSuccessPage({ params, searchParams }) {
     ? tCreate("pickup_at_hotel")
     : (pickupStop?.name ?? tCommon("updating"));
   const pickupAddress = hotelPickupAddress ?? pickupStop?.address ?? "";
-  // `sepay_returned=1` is appended by /dat-ve/sepay/thanh-cong/{code} right
-  // before it redirects here — equivalent to
-  // `sepay_payment_returned` flash session flag, since this app has no
-  // server-side flash/session mechanism to carry that across the redirect.
   const isVerifying = isAwaitingPaymentRequest && sepayReturned === "1";
+  const hotlineDisplay = webProfile.hotline ?? "0865 095 066";
+  const hotlineTel = (webProfile.hotline ?? "0865095066").replace(/[^0-9+]/g, "");
+
   return (
     <BookingPaymentStatusProvider
       code={booking.booking_code}
@@ -79,15 +81,30 @@ export default async function BookingSuccessPage({ params, searchParams }) {
       pollingEnabled={isAwaitingPaymentRequest}
     >
       <main className="bg-page">
-        <section className="ksb-section-hero border-b border-amber-100 bg-amber-50 px-4">
+        <section className="ksb-section-hero border-b border-amber-100 bg-linear-to-b from-amber-50 to-page px-4 pb-10 pt-8 sm:pt-12">
           <div className="mx-auto max-w-7xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-flex items-center gap-2 rounded-sm border border-green-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-green-700">
+            <div className="mx-auto max-w-2xl text-center">
+              <div
+                className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-green-600 text-white shadow-sm"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-8 w-8"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+              <h1 className="mt-5 font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                 {t("title")}
-              </span>
-              <div className="mx-auto mt-5 flex h-20 w-20 items-center justify-center rounded-sm bg-green-600 text-3xl text-white" />
+              </h1>
               <p
-                className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base"
+                className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted sm:text-base"
                 dangerouslySetInnerHTML={{
                   __html: t
                     .raw("thank_you_message")
@@ -103,13 +120,14 @@ export default async function BookingSuccessPage({ params, searchParams }) {
                 verifying={isVerifying}
               />
             </div>
-            <div className="mx-auto mt-8 max-w-2xl rounded-sm border border-amber-200 bg-white p-6">
+
+            <div className="mx-auto mt-8 max-w-xl border border-amber-200/80 bg-white px-5 py-5 sm:px-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
                     {t("booking_code_label")}
                   </p>
-                  <p className="ksb-price mt-2 text-2xl font-extrabold tracking-[0.16em] text-gray-900">
+                  <p className="ksb-price mt-1.5 break-all text-2xl font-extrabold tracking-[0.12em] text-ink">
                     {booking.booking_code}
                   </p>
                 </div>
@@ -118,35 +136,36 @@ export default async function BookingSuccessPage({ params, searchParams }) {
             </div>
           </div>
         </section>
+
         <section className="ksb-section ksb-section-band px-4">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-7">
-            <article className="space-y-6 lg:col-span-2">
-              <section className="rounded-sm border border-amber-100 bg-white p-5 sm:p-6">
-                <h2 className="mb-5 font-display text-lg font-bold text-gray-900">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+            <article className="space-y-5 lg:col-span-2">
+              <section className="border border-amber-100 bg-white p-5 sm:p-6">
+                <h2 className="mb-5 font-display text-lg font-bold text-ink">
                   {t("trip_info_title")}
                 </h2>
-                <div className="mb-6 rounded-sm border border-amber-100 bg-amber-50/60 p-4 sm:p-5">
+                <div className="mb-5 bg-amber-50/70 px-4 py-4 sm:px-5">
                   <div className="flex items-center gap-3 sm:gap-4">
                     <div className="min-w-[72px] text-center">
-                      <p className="text-2xl font-extrabold text-gray-900">
+                      <p className="text-2xl font-extrabold text-ink">
                         {trip?.start_time.slice(0, 5) ?? "--:--"}
                       </p>
-                      <p className="mt-1 text-xs font-medium uppercase tracking-wider text-gray-500">
+                      <p className="mt-1 text-xs font-medium uppercase tracking-wider text-muted">
                         {t("departure_time")}
                       </p>
                     </div>
                     <div className="relative flex-1 border-t-2 border-dashed border-primary-300" />
                     <div className="min-w-[72px] text-center">
-                      <p className="text-2xl font-extrabold text-gray-900">
+                      <p className="text-2xl font-extrabold text-ink">
                         {trip?.end_time.slice(0, 5) ?? "--:--"}
                       </p>
-                      <p className="mt-1 text-xs font-medium uppercase tracking-wider text-gray-500">
+                      <p className="mt-1 text-xs font-medium uppercase tracking-wider text-muted">
                         {t("arrival_time")}
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
                   <InfoCell
                     label={t("route")}
                     value={trip?.route_name ?? tCommon("updating")}
@@ -165,44 +184,42 @@ export default async function BookingSuccessPage({ params, searchParams }) {
                   />
                 </div>
               </section>
-              <section className="rounded-sm border border-amber-100 bg-white p-5 sm:p-6">
-                <h2 className="mb-5 font-display text-lg font-bold text-gray-900">
+
+              <section className="border border-amber-100 bg-white p-5 sm:p-6">
+                <h2 className="mb-4 font-display text-lg font-bold text-ink">
                   {t("locations_title")}
                 </h2>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <div className="rounded-sm border border-green-100 bg-green-50/80 p-4">
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <div className="bg-green-50/80 px-4 py-3.5">
                     <span className="text-xs font-semibold uppercase tracking-wider text-green-700">
                       {t("pickup_point")}
                     </span>
-                    <p className="mt-2 font-semibold text-gray-900">
-                      {pickupName}
-                    </p>
-                    {pickupAddress && (
-                      <p className="mt-1 text-sm text-gray-600">
-                        {pickupAddress}
-                      </p>
-                    )}
+                    <p className="mt-1.5 font-semibold text-ink">{pickupName}</p>
+                    {pickupAddress ? (
+                      <p className="mt-1 text-sm text-muted">{pickupAddress}</p>
+                    ) : null}
                   </div>
-                  <div className="rounded-sm border border-rose-100 bg-rose-50/80 p-4">
+                  <div className="bg-rose-50/80 px-4 py-3.5">
                     <span className="text-xs font-semibold uppercase tracking-wider text-rose-700">
                       {t("dropoff_point")}
                     </span>
-                    <p className="mt-2 font-semibold text-gray-900">
+                    <p className="mt-1.5 font-semibold text-ink">
                       {dropoffStop?.name ?? tCommon("updating")}
                     </p>
-                    {dropoffStop?.address && (
-                      <p className="mt-1 text-sm text-gray-600">
+                    {dropoffStop?.address ? (
+                      <p className="mt-1 text-sm text-muted">
                         {dropoffStop.address}
                       </p>
-                    )}
+                    ) : null}
                   </div>
                 </div>
               </section>
-              <section className="rounded-sm border border-amber-100 bg-white p-5 sm:p-6">
-                <h2 className="mb-5 font-display text-lg font-bold text-gray-900">
+
+              <section className="border border-amber-100 bg-white p-5 sm:p-6">
+                <h2 className="mb-4 font-display text-lg font-bold text-ink">
                   {t("passenger_info_title")}
                 </h2>
-                <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
+                <div className="grid grid-cols-1 gap-3 text-sm md:grid-cols-3">
                   <InfoCell
                     label={t("passenger_name")}
                     value={booking.customer_name}
@@ -218,8 +235,9 @@ export default async function BookingSuccessPage({ params, searchParams }) {
                   />
                 </div>
               </section>
-              <section className="rounded-sm border border-amber-100 bg-white p-5 sm:p-6">
-                <h2 className="mb-5 font-display text-lg font-bold text-gray-900">
+
+              <section className="border border-amber-100 bg-white p-5 sm:p-6">
+                <h2 className="mb-4 font-display text-lg font-bold text-ink">
                   {t("next_steps_title")}
                 </h2>
                 <div className="space-y-4">
@@ -249,38 +267,25 @@ export default async function BookingSuccessPage({ params, searchParams }) {
                         : t("next_step_2_desc")
                     }
                   />
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-sm bg-primary-600 text-sm font-bold text-white">
-                      3
-                    </span>
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {t("next_step_3_title")}
-                      </p>
-                      <p
-                        className="text-sm text-gray-600"
-                        dangerouslySetInnerHTML={{
-                          __html: t
-                            .raw("next_step_3_desc")
-                            .replace(
-                              ":hotline",
-                              webProfile.hotline ?? "0865 095 066",
-                            ),
-                        }}
-                      />
-                    </div>
-                  </div>
+                  <NextStep
+                    n={3}
+                    title={t("next_step_3_title")}
+                    descHtml={t
+                      .raw("next_step_3_desc")
+                      .replace(":hotline", hotlineDisplay)}
+                  />
                 </div>
               </section>
             </article>
-            <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-              <section className="rounded-sm border border-amber-100 bg-white p-5 sm:p-6">
-                <h2 className="mb-4 font-display text-lg font-bold text-gray-900">
+
+            <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+              <section className="border border-amber-100 bg-white p-5 sm:p-6">
+                <h2 className="mb-4 font-display text-lg font-bold text-ink">
                   {t("payment_info_title")}
                 </h2>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-gray-600">{t("total_price")}</span>
+                    <span className="text-muted">{t("total_price")}</span>
                     <span className="ksb-price text-xl font-extrabold text-primary-700">
                       {booking.total_price
                         ? formatMoney(booking.total_price, locale)
@@ -288,26 +293,33 @@ export default async function BookingSuccessPage({ params, searchParams }) {
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-gray-600">{t("payment_method")}</span>
-                    <span className="font-semibold text-gray-900">
+                    <span className="text-muted">{t("payment_method")}</span>
+                    <span className="font-semibold text-ink">
                       {isOnlineBanking
                         ? t("payment_method_online")
                         : t("payment_method_cash")}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-gray-600">{t("payment_status")}</span>
+                    <span className="text-muted">{t("payment_status")}</span>
                     <PaymentStatusBadge initialPaid={isPaid} size="sm" />
                   </div>
                 </div>
-                {isAwaitingPaymentRequest && (
+                {isAwaitingPaymentRequest ? (
                   <PaymentSidebarNote
                     initialPaid={isPaid}
                     verifying={isVerifying}
                   />
-                )}
+                ) : null}
               </section>
-              <section className="rounded-sm bg-slate-900 p-5 text-white sm:p-6">
+
+              <BookingSuccessAccountCta
+                locale={locale}
+                email={booking.customer_email}
+                name={booking.customer_name}
+              />
+
+              <section className="bg-slate-900 p-5 text-white sm:p-6">
                 <h3 className="font-display text-lg font-bold">
                   {t("support_title")}
                 </h3>
@@ -315,23 +327,19 @@ export default async function BookingSuccessPage({ params, searchParams }) {
                   {t("support_description")}
                 </p>
                 <a
-                  href={`tel:${(webProfile.hotline ?? "0865095066").replace(/[^0-9+]/g, "")}`}
+                  href={`tel:${hotlineTel}`}
                   className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary-600 px-4 py-3 font-semibold text-white transition-colors duration-200 hover:bg-primary-700"
                 >
                   {t("call_button")}
                 </a>
               </section>
-              <section className="rounded-sm border border-amber-100 bg-white p-5 sm:p-6">
-                <h3 className="font-display text-base font-bold text-gray-900">
-                  {t("other_routes_title")}
-                </h3>
-                <a
-                  href={localePath(locale, CLIENT_ROUTES.routesIndex)}
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary-700 transition-colors duration-200 hover:text-primary-800"
-                >
-                  {t("other_routes_title")}
-                </a>
-              </section>
+
+              <a
+                href={localePath(locale, CLIENT_ROUTES.routesIndex)}
+                className="block border border-amber-100 bg-white px-5 py-4 text-sm font-medium text-primary-700 transition-colors duration-200 hover:border-primary-200 hover:text-primary-800"
+              >
+                {t("other_routes_title")} →
+              </a>
             </aside>
           </div>
         </section>
@@ -339,29 +347,38 @@ export default async function BookingSuccessPage({ params, searchParams }) {
     </BookingPaymentStatusProvider>
   );
 }
+
 function InfoCell({ label, value, breakAll }) {
   return (
-    <div className="rounded-sm border border-gray-100 bg-gray-50 p-3.5">
-      <p className="text-xs font-medium uppercase tracking-wider text-gray-500">
+    <div className="bg-gray-50 px-3.5 py-3">
+      <p className="text-xs font-medium uppercase tracking-wider text-muted">
         {label}
       </p>
       <p
-        className={`mt-2 font-semibold text-gray-900 ${breakAll ? "break-all" : ""}`}
+        className={`mt-1.5 font-semibold text-ink ${breakAll ? "break-all" : ""}`}
       >
         {value}
       </p>
     </div>
   );
 }
-function NextStep({ n, title, desc }) {
+
+function NextStep({ n, title, desc, descHtml }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-sm bg-primary-600 text-sm font-bold text-white">
+      <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm bg-primary-600 text-sm font-bold text-white">
         {n}
       </span>
-      <div>
-        <p className="font-semibold text-gray-900">{title}</p>
-        <p className="text-sm text-gray-600">{desc}</p>
+      <div className="min-w-0">
+        <p className="font-semibold text-ink">{title}</p>
+        {descHtml ? (
+          <p
+            className="text-sm text-muted"
+            dangerouslySetInnerHTML={{ __html: descHtml }}
+          />
+        ) : (
+          <p className="text-sm text-muted">{desc}</p>
+        )}
       </div>
     </div>
   );
