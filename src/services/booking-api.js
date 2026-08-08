@@ -87,6 +87,13 @@ export function listProvinces() {
     revalidate: 300
   });
 }
+
+/** Route pickup/dropoff stops grouped by province (contact office directory). */
+export function listOffices() {
+  return apiFetch("/public/offices", {
+    revalidate: 300
+  });
+}
 export function listRoutes(params) {
   const qs = new URLSearchParams();
   if (params?.originProvinceId) qs.set("origin_province_id", String(params.originProvinceId));

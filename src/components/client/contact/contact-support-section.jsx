@@ -1,4 +1,4 @@
-import { Headset, Info, Mail, MessageCircle, PhoneCall } from "lucide-react";
+import { Headset, Info, Mail, MapPin, MessageCircle, PhoneCall } from "lucide-react";
 
 /**
  * Support channels, working hours, and offices section.
@@ -15,7 +15,14 @@ function FacebookGlyph({ className }) {
     </svg>
   );
 }
-export function ContactSupportSection({ t, webProfile, facebookUrl, zaloUrl }) {
+
+export function ContactSupportSection({
+  t,
+  webProfile,
+  facebookUrl,
+  zaloUrl,
+  officeGroups = [],
+}) {
   const channels = [
     {
       key: "hotline",
@@ -78,6 +85,11 @@ export function ContactSupportSection({ t, webProfile, facebookUrl, zaloUrl }) {
       external: true,
     },
   ].filter((channel) => channel.href);
+
+  const hasOffices = officeGroups.some(
+    (group) => Array.isArray(group.offices) && group.offices.length > 0,
+  );
+
   return (
     <section className="ksb-section px-4">
       <div className="container mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-12">
@@ -155,10 +167,43 @@ export function ContactSupportSection({ t, webProfile, facebookUrl, zaloUrl }) {
             <h3 className="mt-1 text-xl font-extrabold text-slate-800 md:text-2xl">
               {t("offices_title")}
             </h3>
-            <div className="mt-4 max-h-72 space-y-2 overflow-y-auto pr-1">
-              <p className="rounded-sm border border-dashed border-slate-300 p-4 text-center text-sm text-slate-500">
-                {t("no_offices")}
-              </p>
+            <div className="mt-4 max-h-72 space-y-4 overflow-y-auto pr-1">
+              {!hasOffices ? (
+                <p className="rounded-sm border border-dashed border-slate-300 p-4 text-center text-sm text-slate-500">
+                  {t("no_offices")}
+                </p>
+              ) : (
+                officeGroups.map((group) => (
+                  <div key={group.province_id} className="space-y-2">
+                    <p className="sticky top-0 bg-white/95 py-1 text-xs font-bold uppercase tracking-wider text-slate-500 backdrop-blur-sm">
+                      {group.province_name}
+                    </p>
+                    <ul className="space-y-2">
+                      {(group.offices ?? []).map((office) => (
+                        <li
+                          key={office.id}
+                          className="rounded-sm border border-slate-200 bg-slate-50/80 p-3"
+                        >
+                          <div className="flex items-start gap-2">
+                            <MapPin
+                              className="mt-0.5 h-4 w-4 shrink-0 text-primary-600"
+                              aria-hidden
+                            />
+                            <div className="min-w-0">
+                              <p className="text-sm font-bold text-slate-800">
+                                {office.name || t("office_fallback_name")}
+                              </p>
+                              <p className="mt-0.5 text-xs leading-relaxed text-slate-600">
+                                {office.address || office.district_name}
+                              </p>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              )}
             </div>
           </article>
         </aside>

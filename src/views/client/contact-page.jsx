@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getWebProfile } from "@/services/client-api";
-import { listProvinces, listRoutes } from "@/services/booking-api";
+import { listOffices, listProvinces, listRoutes } from "@/services/booking-api";
 import { ContactPageStyles } from "@/components/client/contact/contact-page-styles";
 import { ContactHeroSection } from "@/components/client/contact/contact-hero-section";
 import { ContactSupportSection } from "@/components/client/contact/contact-support-section";
@@ -38,11 +38,12 @@ export async function generateMetadata({ params }) {
 export default async function ContactPage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const [t, webProfile, provinces, routes] = await Promise.all([
+  const [t, webProfile, provinces, routes, officeGroups] = await Promise.all([
     getTranslations("client.contact"),
     getWebProfile(),
     listProvinces(),
     listRoutes(),
+    listOffices(),
   ]);
   const zaloUrl = safeExternalUrl(webProfile.zalo_url);
   const facebookUrl = safeExternalUrl(webProfile.facebook_url);
@@ -67,6 +68,7 @@ export default async function ContactPage({ params }) {
         webProfile={webProfile}
         facebookUrl={facebookUrl}
         zaloUrl={zaloUrl}
+        officeGroups={Array.isArray(officeGroups) ? officeGroups : []}
       />
       <ContactFaqMapSection t={t} mapEmbedSrc={mapEmbedSrc} />
       <ContactCtaSection t={t} locale={locale} hotline={webProfile.hotline} />
