@@ -17,9 +17,10 @@ export function createTourBooking(payload) {
   });
 }
 
-export function getTourBooking(bookingId) {
-  return apiFetch(`/tour-bookings/${bookingId}`, {
-    credentials: "include",
+/** Full detail requires signed success URL query params (same contract as bus bookings). */
+export function getSignedTourBooking(bookingId, expires, signature) {
+  const qs = new URLSearchParams({ expires, signature });
+  return apiFetch(`/tour-bookings/${bookingId}?${qs.toString()}`, {
     cache: "no-store",
   });
 }

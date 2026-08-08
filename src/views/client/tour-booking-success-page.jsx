@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ApiError } from "@/services/api-base";
-import { getTourBooking } from "@/services/tour-api";
+import { getSignedTourBooking } from "@/services/tour-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatIsoDate, formatMoney } from "@/utils/client-format";
 import { buildPageMetadata } from "@/lib/seo";
@@ -21,16 +21,19 @@ export async function generateMetadata({ params }) {
   });
 }
 
-export default async function TourBookingSuccessPage({ params }) {
+export default async function TourBookingSuccessPage({ params, searchParams }) {
   const { locale, bookingId } = await params;
+  const { expires, signature } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("client.tours.success");
 
   let booking = null;
-  try {
-    booking = await getTourBooking(Number(bookingId));
-  } catch (err) {
-    if (!(err instanceof ApiError)) throw err;
+  if (expires && signature) {
+    try {
+      booking = await getSignedTourBooking(Number(bookingId), expires, signature);
+    } catch (err) {
+      if (!(err instanceof ApiError)) throw err;
+    }
   }
 
   return (

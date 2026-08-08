@@ -23,9 +23,10 @@ export function createHotelBooking(payload) {
   });
 }
 
-export function getHotelBooking(bookingId) {
-  return apiFetch(`/hotel-bookings/${bookingId}`, {
-    credentials: "include",
+/** Full detail requires signed success URL query params (same contract as bus bookings). */
+export function getSignedHotelBooking(bookingId, expires, signature) {
+  const qs = new URLSearchParams({ expires, signature });
+  return apiFetch(`/hotel-bookings/${bookingId}?${qs.toString()}`, {
     cache: "no-store",
   });
 }

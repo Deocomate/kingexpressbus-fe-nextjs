@@ -1,4 +1,4 @@
-// Two-stage upload contract (`app/schemas/admin_meta.py`):
+// Two-stage upload contract (`app/presentation/schemas/admin_meta.py`):
 // stage (multipart) → token; commit(token, target_directory) on form save;
 // DELETE revert on cancel. Commit only after parent form succeeds.
 import { apiFetch } from "@/services/api-base";

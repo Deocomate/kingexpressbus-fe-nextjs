@@ -1,4 +1,4 @@
-// Admin booking helpers — shapes match `app/schemas/booking.py`
+// Admin booking helpers — shapes match `app/presentation/schemas/booking.py`
 // (BookingOut, BookingActionOut, BookingCancelIn, BookingAdminUpdateIn).
 // Named actions cover the UI; PATCH /admin/bookings/{id}/status exists on BE
 // but is unused here (confirm/complete/cancel are enough).

@@ -1,5 +1,5 @@
 // Admin-only auth calls. Shares the same httpOnly session cookie as the
-// client portal (see lib/client-auth.ts) — /admin/auth/login just adds a
+// client portal (see src/services/client-auth.js) — /admin/auth/login just adds a
 // role="admin" check + stricter rate limit server-side. /auth/me and
 // /auth/logout are reused as-is since the cookie/role model is shared.
 import { apiFetch } from "@/services/api-base";

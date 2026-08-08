@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ApiError } from "@/services/api-base";
-import { getHotelBooking } from "@/services/hotel-api";
+import { getSignedHotelBooking } from "@/services/hotel-api";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { formatIsoDate, formatMoney } from "@/utils/client-format";
 import { buildPageMetadata } from "@/lib/seo";
@@ -21,16 +21,19 @@ export async function generateMetadata({ params }) {
   });
 }
 
-export default async function HotelBookingSuccessPage({ params }) {
+export default async function HotelBookingSuccessPage({ params, searchParams }) {
   const { locale, bookingId } = await params;
+  const { expires, signature } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("client.hotels.success");
 
   let booking = null;
-  try {
-    booking = await getHotelBooking(Number(bookingId));
-  } catch (err) {
-    if (!(err instanceof ApiError)) throw err;
+  if (expires && signature) {
+    try {
+      booking = await getSignedHotelBooking(Number(bookingId), expires, signature);
+    } catch (err) {
+      if (!(err instanceof ApiError)) throw err;
+    }
   }
 
   return (

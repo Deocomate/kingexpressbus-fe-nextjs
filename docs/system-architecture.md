@@ -78,14 +78,14 @@ sequenceDiagram
     participant SP as SePay Payment Gateway
 
     Customer->>FE: Chọn chuyến xe, vị trí ghế & nhập thông tin
-    FE->>BE: POST /api/v1/client/bookings (Tạo vé giữ chỗ)
+    FE->>BE: POST /api/v1/bookings (Tạo vé giữ chỗ)
     BE-->>FE: Trả về mã vé (VD: KING123456) & số tiền
     FE->>Customer: Hiển thị Mã QR VietQR SePay kèm Cú pháp chuyển khoản
     Customer->>SP: Quét mã QR & chuyển khoản qua App Ngân hàng
     SP->>BE: Webhook thông báo giao dịch thành công (Mã: KING123456)
     BE->>BE: Cập nhật trạng thái vé -> PAID (Đã thanh toán)
     loop Polling Status Check (mỗi 3 giây)
-        FE->>BE: GET /api/v1/client/bookings/status/KING123456
+        FE->>BE: GET /api/v1/payments/status/KING123456
         BE-->>FE: Trạng thái: PAID
     end
     FE->>Customer: Chuyển hướng sang màn hình Đặt vé thành công (Booking Success Page)

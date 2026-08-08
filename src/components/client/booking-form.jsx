@@ -21,78 +21,18 @@ import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { BookingStopSection } from "@/components/client/booking-stop-section";
 import { PhoneCountryInput } from "@/components/client/phone-country-input";
 import { PriceSummary } from "@/components/client/price-summary";
-
-function formatDate(iso) {
-  const [y, m, d] = iso.split("-");
-  return `${d}/${m}/${y}`;
-}
-
-function formatMoney(amount, locale) {
-  return `${amount.toLocaleString(locale === "vi" ? "vi-VN" : "en-US")}đ`;
-}
-
-function toBreakdown(source) {
-  if (!source) {
-    return {
-      baseUnitPrice: 0,
-      globalSurchargeUnit: 0,
-      routeSurchargeUnit: 0,
-      finalUnitPrice: 0,
-      surchargeSnapshot: null,
-    };
-  }
-  return {
-    baseUnitPrice: Number(source.base_unit_price ?? source.baseUnitPrice ?? 0),
-    globalSurchargeUnit: Number(
-      source.global_surcharge_unit ?? source.globalSurchargeUnit ?? 0,
-    ),
-    routeSurchargeUnit: Number(
-      source.route_surcharge_unit ?? source.routeSurchargeUnit ?? 0,
-    ),
-    finalUnitPrice: Number(
-      source.final_unit_price ?? source.finalUnitPrice ?? 0,
-    ),
-    surchargeSnapshot:
-      source.surcharge_reason_snapshot ?? source.surchargeSnapshot ?? null,
-  };
-}
-
-function isPickupStop(stop) {
-  return stop.stop_type === "pickup" || stop.stop_type === "both";
-}
-
-function isDropoffStop(stop) {
-  return stop.stop_type === "dropoff" || stop.stop_type === "both";
-}
-
-function isValidEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-function isValidPhone(value) {
-  const digits = value.replace(/\D/g, "");
-  return digits.length >= 8 && digits.length <= 15;
-}
-
-function clearFieldError(id) {
-  document.getElementById(id)?.classList.remove("field-error");
-}
-
-function flagFieldError(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.add("field-error");
-  el.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-
-function apiErrorMessage(err, fallback) {
-  const body = err?.body;
-  if (typeof body?.detail === "string") return body.detail;
-  if (Array.isArray(body?.detail) && body.detail[0]?.msg) {
-    return String(body.detail[0].msg);
-  }
-  return fallback;
-}
+import {
+  apiErrorMessage,
+  clearFieldError,
+  flagFieldError,
+  formatBookingDate as formatDate,
+  formatBookingMoney as formatMoney,
+  isDropoffStop,
+  isPickupStop,
+  isValidEmail,
+  isValidPhone,
+  toPriceBreakdown as toBreakdown,
+} from "@/components/client/booking-form-helpers";
 
 /**
  * Client booking create form — trip/date come from the server page;

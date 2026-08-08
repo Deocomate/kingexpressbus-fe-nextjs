@@ -1,5 +1,5 @@
 // Generic helpers matching FastAPI admin list/write contract
-// (app/schemas/admin_common.py): Paginated{items,total,page,page_size},
+// (app/presentation/schemas/admin_common.py): Paginated{items,total,page,page_size},
 // ReorderRequest{ids}, MessageOut{message}. Server owns sort/search columns;
 // client only sends page/page_size/q (+ module-specific extra filters).
 // Bulk delete is per-id DELETE (no BE bulk-delete route).
@@ -38,7 +38,7 @@ export function fetchPaginated(path, params) {
 
 /**
  * FastAPI error bodies: `{detail: string}` or delete-guard
- * `{detail: {message, booking_count}}` (see `app/services/delete_guards.py`).
+ * `{detail: {message, booking_count}}` (see `app/application/catalog/delete_guards.py`).
  */
 export function getErrorMessage(err, fallback) {
   if (err instanceof ApiError) {

@@ -1,8 +1,8 @@
-// Mirrors app/services/booking_notes.py's prefix convention so the admin
+// Mirrors app/application/booking/booking_notes.py's prefix convention so the admin
 // UI can show/edit the hotel-pickup address and free-text note as separate
 // fields instead of the raw encoded string — editing the raw string and
 // losing the [HOTEL_PICKUP]: prefix permanently destroys the pickup address
-// (nothing re-derives it; mail.py reads it back via this same convention).
+// (nothing re-derives it; mail service reads it back via this same convention).
 const HOTEL_PICKUP_PREFIX = "[HOTEL_PICKUP]: ";
 const LEGACY_HOTEL_PICKUP_PREFIX = "[Đón tại khách sạn]: ";
 const CUSTOMER_NOTE_PREFIX = "[CUSTOMER_NOTE]: ";

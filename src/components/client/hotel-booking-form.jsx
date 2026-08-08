@@ -74,8 +74,11 @@ export function HotelBookingForm({ hotel, locale, initialRoomId, initialCheckIn,
         total_price: total,
         notes: notes.trim() || null,
       });
-      const path = `${localePath(locale, CLIENT_ROUTES.hotelBooking)}/thanh-cong/${result.booking.id}`;
-      router.push(path);
+      if (result?.success_url) {
+        window.location.assign(result.success_url);
+        return;
+      }
+      router.push(localePath(locale, CLIENT_ROUTES.hotels));
     } catch (err) {
       const detail =
         err instanceof ApiError

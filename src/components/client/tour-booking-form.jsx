@@ -43,9 +43,11 @@ export function TourBookingForm({ tour, locale }) {
         total_price: total,
         notes: notes.trim() || null,
       });
-      router.push(
-        `${localePath(locale, CLIENT_ROUTES.tourBooking)}/thanh-cong/${result.booking.id}`
-      );
+      if (result?.success_url) {
+        window.location.assign(result.success_url);
+        return;
+      }
+      router.push(localePath(locale, CLIENT_ROUTES.tours));
     } catch (err) {
       const detail =
         err instanceof ApiError
