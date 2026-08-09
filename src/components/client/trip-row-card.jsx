@@ -4,9 +4,9 @@ import { getTranslations } from "next-intl/server";
 import { CLIENT_ROUTES, localePath } from "@/services/client-routes";
 import { TripDetailModal } from "@/components/client/trip-detail-modal";
 import {
-  FALLBACK_BUS_IMAGE,
   formatDurationMinutes,
   formatMoney,
+  primaryBusImage,
   tripDurationMinutes,
 } from "@/utils/client-format";
 
@@ -53,6 +53,7 @@ export async function TripRowCard({ trip, date, locale }) {
   const tripPrice = trip.effective_price ?? trip.price;
   const bookingHref = `${localePath(locale, CLIENT_ROUTES.booking)}?trip_id=${trip.trip_id}&date=${date}`;
   const services = Array.isArray(trip.bus_services) ? trip.bus_services : [];
+  const thumbnailSrc = primaryBusImage(trip);
 
   return (
     <article className="ksb-trip-row group" id={`trip-card-${trip.trip_id}`}>
@@ -60,7 +61,7 @@ export async function TripRowCard({ trip, date, locale }) {
         <div className="relative aspect-16/10 overflow-hidden rounded-sm bg-panel md:aspect-square md:h-36 md:w-37">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={FALLBACK_BUS_IMAGE}
+            src={thumbnailSrc}
             alt={trip.bus_name}
             loading="lazy"
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
